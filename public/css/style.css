@@ -1,0 +1,197 @@
+*, 
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+body {
+  font-family: 'Source Code Pro',
+  monospace;
+  font-weight: 400;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Bitter',
+  serif;
+  font-weight: 700;
+}
+
+ul {
+  padding: 0;
+}
+
+.logo {
+  background-image: url('../images/logo.png');
+  width: 50px;
+}
+
+.intro {
+  background-image: url('https://wallpaperaccess.com/full/1122614.jpg');
+  height: calc(100vh - 57px);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  position: relative;
+  color: #fff;
+}
+
+.intro__inner {
+  top:30%;
+  left: 10%;
+  width: 500px;
+  position: absolute;
+}
+
+.inner__container {
+  margin: 50px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner__container-title {
+  margin-bottom: 30px;
+}
+
+.card-inner {
+  color: #000;
+}
+
+.news-img > img {
+  max-height: 175px;
+}
+
+.tariffs-img > img {
+  width: 200px;
+}
+
+.galery {
+  margin: 50px 0;
+}
+
+.galery_item {
+    position: relative;
+    background: linear-gradient(to bottom, #f38181, #fce38a);
+}
+
+.galery_card {
+  overflow: hidden;
+  height: 300px;
+}
+
+.galery_card--long {
+  height: auto;
+}
+
+.galery_item:hover .galery_img {
+    opacity: 0.1;
+}
+
+.galery_item:hover .galery_info {
+    opacity: 1;
+}
+
+.galery_img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.2s linear;
+    width: 100%;
+}
+
+.galery_info {
+    width: 100%;
+    padding: 0 15px;
+    text-align: center;
+    color: #fff;
+    opacity: 0;
+    position: absolute;
+    top: 30%;
+    left: 0;
+    z-index: 1;
+    transform: translate3d(0, -50%, 0);
+    transition: opacity 0.2s linear;
+}
+
+.galery_title {
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.galery_text {
+    font-size: 15;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.galery-wrapper {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 300px
+}
+
+.one {
+  grid-column: 1;
+  grid-row: 1;
+}
+.two {
+  grid-column: 2;
+  grid-row: 1;
+}
+.three {
+  grid-column: 3;
+  grid-row: 1/3;
+}
+.four {
+  grid-column: 4;
+  grid-row: 1;
+}
+.five {
+  grid-column: 1;
+  grid-row: 2;
+}
+.six {
+  grid-column: 2;
+  grid-row: 2;
+}
+.seven {
+  grid-column: 4;
+  grid-row: 2;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+}
+
+.dropdown-menu li {
+  position: relative;
+}
+
+.dropdown-menu .submenu {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: -7px;
+}
+
+.dropdown-menu .submenu-left {
+  right: 100%;
+  left: auto;
+}
+
+.dropdown-menu>li:hover {
+  background-color: #f1f1f1
+}
+
+.dropdown-menu>li:hover>.submenu {
+  display: block;
+}

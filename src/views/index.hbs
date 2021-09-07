@@ -1,0 +1,58 @@
+<div class="intro">
+  <div class="intro__inner">
+    <h2 class="intro__title">Название</h2>
+    <div class="intro__info">
+      <p>г.Москва ул.Зоопарковая 5</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit sequi natus laboriosam aperiam itaque laborum.
+        Veritatis
+        vero, autem dolore maiores voluptatem distinctio, neque deserunt</p>
+      <ul>Режим работы
+        <li>Будни</li>
+        <li>Выходные</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="news">
+  <div class="px-5 inner__container">
+    <h2 class="inner__container-title">Новости</h2>
+    <div class="news">
+        {{!-- Each card ... --}}
+        {{> newsCard}} 
+        {{> newsCard}}
+        {{> newsCard}}
+    </div>
+  </div>
+</div>
+
+<div class="galery">
+<h2 class="inner__container-title text-center">Наши Животные</h2>
+<div class="galery-wrapper">
+  <div class="one galery_card">{{>galeryCard}}</div>
+  <div class="two galery_card">{{>galeryCard}}</div>
+  <div class="three galery_card galery_card--long">{{>galeryCard}}</div>
+  <div class="four galery_card">{{>galeryCard}}</div>
+  <div class="five galery_card">{{>galeryCard}}</div>
+  <div class="six galery_card">{{>galeryCard}}</div>
+  <div class="seven galery_card">{{>galeryCard}}</div>
+</div>
+</div>
+
+<div class="tafiffs">
+  <div class="px-5 inner__container">
+    <h2 class="inner__container-title">Taрифы</h2>
+    <div class="d-flex flex-wrap">
+      {{!-- Each card ... --}}
+      {{> tariffsCard}}
+      {{> tariffsCard}}
+      {{> tariffsCard}}
+    </div>
+  </div>
+</div>
+
+<div class="footer bg-dark">
+  <a href="">admin</a>
+</div>
+
