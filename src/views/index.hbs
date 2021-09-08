@@ -18,7 +18,9 @@
   <div class="px-5 inner__container">
     <h2 class="inner__container-title">Новости</h2>
         {{!-- Each card ... --}}
-        {{> newsCard}} 
+        {{#each news}}
+          {{> newsCard}} 
+        {{/each}}
         <div class="text-right d-block">
           <a href="/news">Смотреть все новости зоопарка</a>
         </div>
@@ -40,14 +42,14 @@
   </div>
 </div>
 
-<div id="tafiffs">
+<div id="tariffs">
   <div class="px-5 inner__container">
     <h2 class="inner__container-title">Taрифы</h2>
     <div class="d-flex flex-wrap">
       {{!-- Each card ... --}}
+      {{#each tariffs}}
       {{> tariffsCard}}
-      {{> tariffsCard}}
-      {{> tariffsCard}}
+      {{/each}}
     </div>
   </div>
 </div>

@@ -1,17 +1,13 @@
-<script defer src='/js/index.js'></script>
-
-<div class='card border-0 my-5 overflow-hidden' style='width: 50rem;'>
-  <div class='card-body p-0 card-inner'>
-    <div class='news-img'>
-      <img src='/images/news/horses.png' alt='' />
-    </div>
-    <div class='news-content px-5 py-2'>
-      <h5 class='card-title'>{{lastNews.title}}</h5>
+<div class="card border-0 my-5 overflow-hidden mb-3" style='width: 50rem;'>
+  <div class='news-img'>
+    <img src="{{image}}" class="card-img-top" alt="...">
+  </div>
+  <div class="card-body">
+    <h5 class='card-title'>{{title}}</h5>
       <h6 class='card-subtitle mb-2 text-muted'>Card subtitle</h6>
-      <p class='card-text'>{{lastNews.content}}</p>
-      <a href='/news/{{lastNews.id}}' class='see-more link-warning'>
+      <p class='card-text'>{{content}}</p>
+      <a href='/news/{{id}}' class='see-more link-warning'>
         Узнать больше
       </a>
-    </div>
   </div>
 </div>
