@@ -22,10 +22,17 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           isAlpha: true,
         },
-        categoryId: {
-          type: DataTypes.INTEGER,
-          allowNull: false,
+      },
+      image: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        validate: {
+          isUrl: true,
         },
+      },
+      categoryId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
     },
     {
