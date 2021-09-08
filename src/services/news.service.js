@@ -16,6 +16,24 @@ class NewsService {
     return news;
   }
 
+  async findLastNews() {
+    let news;
+
+    try {
+      news = await db.News.findAll({
+        raw: true,
+        order: [['createdAt', 'DESC']],
+        limit: 1,
+      });
+    } catch (error) {
+      console.error(error);
+
+      return { message: 'Не удалось найти все новости.' };
+    }
+
+    return news[0];
+  }
+
   async createNewNews({ title, content, image, adminId }) {
     let news;
 
