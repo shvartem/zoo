@@ -22,7 +22,7 @@
           {{> newsCard}} 
         {{/each}}
         <div class="text-right d-block">
-          <a href="/news">Смотреть все новости зоопарка</a>
+          <a href="/news" class="link-warning">Смотреть все новости зоопарка</a>
         </div>
   </div>
 </div>
@@ -31,13 +31,9 @@
   <div class="inner__container--wide">
     <h2 class="inner__container-title text-center">Наши Животные</h2>
     <div class="galery-wrapper">
-      <div class="one galery_card">{{>galeryCard}}</div>
-      <div class="two galery_card">{{>galeryCard}}</div>
-      <div class="three galery_card galery_card--long">{{>galeryCard}}</div>
-      <div class="four galery_card">{{>galeryCard}}</div>
-      <div class="five galery_card">{{>galeryCard}}</div>
-      <div class="six galery_card">{{>galeryCard}}</div>
-      <div class="seven galery_card">{{>galeryCard}}</div>
+      {{#each images}}
+        {{> galeryCard}}
+      {{/each}}
     </div>
   </div>
 </div>
