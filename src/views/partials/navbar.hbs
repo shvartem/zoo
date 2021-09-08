@@ -21,38 +21,9 @@
         <li class="dropdown">
 			    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Животные</a>
 		        <ul class="dropdown-menu">
-			        <li><a class="dropdown-item" href=""> Млекопитающие > </a>
-			  	      <ul class="submenu dropdown-menu">
-				          <li><a class="dropdown-item" href="/categories/1">Млекопитающие1</a></li>
-				          <li><a class="dropdown-item" href="#">Млекопитающие2</a></li>
-				          <li><a class="dropdown-item" href="#">Млекопитающие3</a></li>
-				        </ul>
-			        </li>
-			        <li><a class="dropdown-item" href="#"> Птицы > </a>
-			  	      <ul class="submenu dropdown-menu">
-				          <li><a class="dropdown-item" href="#">Птицы1</a></li>
-				          <li><a class="dropdown-item" href="#">Птицы2</a></li>
-				          <li><a class="dropdown-item" href="#">Птицы3</a></li>
-				          <li><a class="dropdown-item" href="#">Птицы4</a></li>
-				        </ul>
-			        </li>
-			        <li><a class="dropdown-item" href="#"> Пресмыкающиеся ></a>
-			  	      <ul class="submenu dropdown-menu">
-				          <li><a class="dropdown-item" href="#">Пресмыкающиеся1</a></li>
-				          <li><a class="dropdown-item" href="#">Пресмыкающиеся2</a></li>
-				          <li><a class="dropdown-item" href="#">Пресмыкающиеся3</a></li>
-				          <li><a class="dropdown-item" href="#">Пресмыкающиеся4</a></li>
-				        </ul>
-			        </li>
-			        <li><a class="dropdown-item" href="#"> Земноводные > </a>
-        	      <ul class="submenu dropdown-menu">
-				          <li><a class="dropdown-item" href="#">Земноводные1</a></li>
-				          <li><a class="dropdown-item" href="#">Земноводные2</a></li>
-				          <li><a class="dropdown-item" href="#">Земноводные3</a></li>
-				          <li><a class="dropdown-item" href="#">Земноводные4</a></li>
-				        </ul>
-              </li>
-			        <li><a class="dropdown-item" href="#"> Рыбы </a></li>
+							{{#each ...}}
+			        	{{>listItem}}
+							{{/each}}
 		        </ul>
         </li>
         <li class="nav-item">
