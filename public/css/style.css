@@ -228,7 +228,7 @@ ul {
 }
 
 .contacts__inner {
-  width: 60%;
+  width: 80%;
   display: flex;
   margin: 0 auto;
   justify-content: space-around;
@@ -275,4 +275,9 @@ ul {
 .animal_carousel {
   width: 70%;
   margin: 40px auto;
+}
+
+.admin-container {
+  width: 50%;
+  margin: 50px auto;
 }

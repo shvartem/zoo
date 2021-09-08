@@ -10,16 +10,4 @@ router.get('/', async (req, res) => {
   res.render('index', { categories: req.categories, lastNews });
 });
 
-router.get('/news', (req, res) => {
-  res.render('news');
-});
-
-router.get('/categories/1', (req, res) => {
-  res.render('category');
-});
-
-router.get('/categories/1/animals/1', (req, res) => {
-  res.render('animal');
-});
-
 module.exports = router;
