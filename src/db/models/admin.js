@@ -2,7 +2,9 @@ const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Admin extends Model {
-    static associate() {}
+    static associate({ News }) {
+      this.hasMany(News, { foreignKey: 'adminId' });
+    }
   }
   Admin.init(
     {

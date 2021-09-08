@@ -1,47 +1,47 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Admins', {
+    await queryInterface.createTable('News', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      firstName: {
+      title: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
+      content: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
+      image: {
         type: Sequelize.TEXT,
         allowNull: false,
         validate: {
-          isAlpha: true,
+          isUrl: true,
         },
       },
-      lastName: {
-        type: Sequelize.TEXT,
+      adminId: {
+        type: Sequelize.INTEGER,
         allowNull: false,
-        validate: {
-          isAlpha: true,
+        references: {
+          model: {
+            tableName: 'Admins',
+          },
         },
       },
-      email: {
-        type: Sequelize.TEXT,
+      createdAt: {
         allowNull: false,
-        validate: {
-          isEmail: true,
-        },
+        type: Sequelize.DATE,
       },
-      password: {
-        type: Sequelize.TEXT,
+      updatedAt: {
         allowNull: false,
-        validate: {
-          len: [6, 10],
-        },
-      },
-      isSuperAdmin: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
+        type: Sequelize.DATE,
       },
     });
   },
   down: async (queryInterface) => {
-    await queryInterface.dropTable('Admins');
+    await queryInterface.dropTable('News');
   },
 };
