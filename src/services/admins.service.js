@@ -54,6 +54,24 @@ class AdminsService {
     return admin;
   }
 
+  async findAdminByEmail(email) {
+    let admin;
+
+    try {
+      admin = await db.Admin.findOne({
+        where: {
+          email,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+
+      return { message: 'Не удалось найти администратора.' };
+    }
+
+    return admin;
+  }
+
   async editAdminById({
     id,
     firstName,

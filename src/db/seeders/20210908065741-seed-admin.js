@@ -38,6 +38,13 @@ module.exports = {
           password: '123456',
           isSuperAdmin: 'false',
         },
+        {
+          firstName: 'Artem',
+          lastName: 'Shalaginov',
+          email: 'shvartem@gmail.com',
+          password: '123456',
+          isSuperAdmin: 'true',
+        },
       ],
       {},
     );

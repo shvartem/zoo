@@ -4,9 +4,11 @@ const NewsService = require('../services/news.service');
 const newsService = new NewsService();
 
 class IndexController {
-  async getLastNews() {
+  async getLastNews(req, res) {
     const lastNews = await newsService.findLastNews();
-    return lastNews;
+    lastNews.content = `${lastNews.content.substring(0, 140)}...`;
+
+    res.render('index', { categories: req.categories, lastNews });
   }
 }
 
