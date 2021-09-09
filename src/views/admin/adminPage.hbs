@@ -14,6 +14,7 @@
         aria-selected='true'
       >Добавить животное</button>
     </li>
+    {{#if admin.isSuperAdmin}}
     <li class='nav-item' role='presentation'>
       <button
         class='nav-link'
@@ -26,6 +27,7 @@
         aria-selected='false'
       >Добавить Сотрудника</button>
     </li>
+    {{/if}}
     <li class='nav-item' role='presentation'>
       <button
         class='nav-link'
@@ -49,6 +51,9 @@
         aria-controls='addNews'
         aria-selected='false'
       >Добавить новость</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Выйти</button>
     </li>
   </ul>
 
@@ -275,6 +280,10 @@
           <button type='submit' class='btn btn-primary'>Submit</button>
         </form>
       </div>
+    </div>
+    <div class="tab-pane d-flex justify-content-center flex-column  my-3 align-items-center" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+      <p>Вы уверены что хотите выйти?</p>
+      <a href="/admins/logout" class="btn btn-primary">Выйти</a>
     </div>
   </div>
 </div>

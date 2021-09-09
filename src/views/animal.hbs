@@ -1,3 +1,5 @@
+<script defer src="/js/animal-page.js"></script>
+
 <div class="animal">
   <div class="px-5 inner__container">
     <div class="card mb-3" style="max-width: 50rem;">
@@ -7,10 +9,41 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">{{animal.name}}</h5>
-            <p class="card-text">Класс: {{animal.category}}</p>
-            <p class="card-text">{{animal.description}}</p>
+            <h5 id="cardTitle" class="card-title">{{animal.name}}</h5>
+            <p id="cardClass" class="card-text">Класс: {{animal.category}}</p>
+            <p id="cardDescr" class="card-text">{{animal.description}}</p>
           </div>
+          {{#if admin}} 
+              <div class="d-flex">
+                <form name="sendToEditAnimal" method="GET" class="m-2">
+                  <button class='btn btn-outline-secondary'>
+                    Редактировать
+                  </button>
+                </form>
+                <form action="sendToAddPhoto" class="m-2">
+                  <button class='btn btn-outline-secondary'>
+                    Добавить фото в галерею
+                  </button>
+                </form>
+              </div>
+              <div id="editForm" class="d-flex my-3 justify-content-center hidden">
+                <form name="editAnimalForm" action="/categories/{{animal.categoryId}}/animals/{{animal.id}}" method="PUT" class="m-2">
+                <div class="mb-3">
+                  <label class="form-label">Название</label>
+                  <input id="name" name="name" type="text" class="form-control">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Описание</label>
+                  <input id="descr" name="description"  type="text" class="form-control">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Фото карточки</label>
+                  <input id="image" name="image" type="file" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
+          {{/if}}
         </div>
       </div>
     </div>

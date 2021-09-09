@@ -14,16 +14,25 @@ class AdminsController {
   }
 
   async renderAdminPage(req, res) {
-    console.log(req.body);
     // const admin = await adminsService.findAdminByEmail(email);
-
-    res.render('admin/adminPage', { categories: req.categories });
+    if(req.session.admin) {
+      res.render('admin/adminPage', { categories: req.categories, admin: req.session.admin });
+      return
+    }
+    res.redirect('/admins/login')
   }
 
   async loginAdmin(req, res) {
     const { email, password } = req.body;
     try {
       const admin = await adminsService.findAdminByEmail(email);
+      if (admin.password === password) {
+        req.session.admin = {
+          name: admin.firstName,
+          id: admin.id,
+          isSuperAdmin: admin.isSuperAdmin
+        }
+      }
       res
         .status(200)
         .json({ link: `http://localhost:3000/admins/${admin.id}` });
@@ -47,6 +56,21 @@ class AdminsController {
 
       res.status(500).json({ message });
     }
+  }
+
+  async logout(req, res) {
+    req.session.destroy((error) => {
+    if (error) {
+      console.log(error);
+    }
+    res
+      .clearCookie('user_sid')
+      .redirect('/');
+    });
+  }
+
+  async redirectOnLogin(req, res) {
+    res.redirect('/admins/login')
   }
 }
 

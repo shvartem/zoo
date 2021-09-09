@@ -11,11 +11,11 @@ router.get('/:id', async (req, res) => {
   );
 
   const category = req.categories.find((el) => el.id == req.params.id);
-  res.render('category', {
-    categories: req.categories,
-    animals,
-    category: category.title,
-  });
+  if(req.session.admin) {
+    res.render('category', {categories: req.categories,animals, category: category.title, admin: req.session.admin});
+  return
+  }
+  res.render('category', {categories: req.categories,animals,category: category.title});
 });
 
 router.get('/:categoryId/animals/:animalId', async (req, res) => {
@@ -32,7 +32,10 @@ router.get('/:categoryId/animals/:animalId', async (req, res) => {
   });
   const [firsPhoto] = animalPhotos;
   firsPhoto.active = true;
-
+  if(req.session.admin) {
+    res.render('animal', { categories: req.categories, animal, animalPhotos,  admin: req.session.admin });
+    return
+  }
   res.render('animal', { categories: req.categories, animal, animalPhotos });
 });
 

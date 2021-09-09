@@ -45,8 +45,10 @@
           <a class='nav-link' href='/news'>Новости</a>
         </li>
       </ul>
+      {{#if admin}} 
+        <a class='nav-link link-light' href="/admins/{{admin.id}}">{{admin.name}}</a>
+      {{/if}}
       <form class='d-flex'>
-        {{! <button type="button" class="btn btn-warning">Напишите нам</button> }}
         <button class='btn btn-outline-warning' type='submit'>Напишите нам</button>
       </form>
     </div>
