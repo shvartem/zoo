@@ -15,7 +15,7 @@ document.addPhotoForm.addEventListener('submit', async (e) => {
   })
   if(response.ok) {
     console.log(action.split('/'))
-    // window.location.href = 'http://localhost:3000/'
+    window.location.href = 'http://localhost:3000/'
   }
 })
 
