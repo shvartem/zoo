@@ -23,7 +23,7 @@ class CategoriesController {
 
   async createNewAnimal(req, res) {
     const animalData = req.body;
-    animalData.image = req.file.path.replace(/^public\//, '');
+    animalData.image = req.file.path.replace(/^public/, '');
 
     try {
       const newAnimal = await categoryService.createAnimal(animalData);

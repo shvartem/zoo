@@ -11,16 +11,10 @@ module.exports = (sequelize, DataTypes) => {
       firstName: {
         type: DataTypes.TEXT,
         allowNull: false,
-        validate: {
-          isAlpha: true,
-        },
       },
       lastName: {
         type: DataTypes.TEXT,
         allowNull: false,
-        validate: {
-          isAlpha: true,
-        },
       },
       email: {
         type: DataTypes.TEXT,
