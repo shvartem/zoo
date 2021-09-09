@@ -12,10 +12,10 @@ class NewsService {
 
       return { message: 'Не удалось найти все новости.' };
     }
-    news = news.map(el => {
+    news = news.map((el) => {
       el.content = `${el.content.substring(0, 140)}...`;
-      return el
-    })
+      return el;
+    });
 
     return news;
   }
@@ -32,7 +32,7 @@ class NewsService {
     } catch (error) {
       return { message: 'Не удалось найти все новости.' };
     }
-    const [lastNews] = news
+    const [lastNews] = news;
     lastNews.content = `${lastNews.content.substring(0, 140)}...`;
     return news;
   }

@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "elbrus_practice",
-    "password": 7236,
+    "username": "human",
+    "password": "human",
     "database": "zoo",
     "host": "127.0.0.1",
     "dialect": "postgres"
