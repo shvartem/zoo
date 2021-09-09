@@ -10,9 +10,6 @@ module.exports = {
       title: {
         type: Sequelize.TEXT,
         allowNull: false,
-        validate: {
-          isAlpha: true,
-        },
       },
     });
   },
