@@ -11,9 +11,6 @@ module.exports = (sequelize, DataTypes) => {
       photoUrl: {
         type: DataTypes.TEXT,
         allowNull: false,
-        validate: {
-          isUrl: true,
-        },
       },
       animalId: {
         type: DataTypes.INTEGER,

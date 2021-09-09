@@ -10,9 +10,6 @@ module.exports = {
       photoUrl: {
         type: Sequelize.TEXT,
         allowNull: false,
-        validate: {
-          isUrl: true,
-        },
       },
       animalId: {
         type: Sequelize.INTEGER,

@@ -2,6 +2,7 @@ const router = require('express').Router();
 const db = require('../db/models');
 const CategoriesController = require('../controllers/categories.controller');
 const CategoriesService = require('../services/categories.service');
+const upload = require('../middlewares/uploadFile.middleware');
 
 const categoriesController = new CategoriesController();
 
@@ -36,6 +37,10 @@ router.get('/:categoryId/animals/:animalId', async (req, res) => {
   res.render('animal', { categories: req.categories, animal, animalPhotos });
 });
 
-router.post('/:categoryId/animals', categoriesController.createNewAnimal);
+router.post(
+  '/:categoryId/animals',
+  upload.single('image'),
+  categoriesController.createNewAnimal,
+);
 
 module.exports = router;

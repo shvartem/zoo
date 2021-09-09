@@ -27,9 +27,6 @@ module.exports = (sequelize, DataTypes) => {
       image: {
         type: DataTypes.TEXT,
         allowNull: false,
-        validate: {
-          isUrl: true,
-        },
       },
     },
     {

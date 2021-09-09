@@ -3,9 +3,6 @@ module.exports = {
     await queryInterface.addColumn('Tariffs', 'image', {
       type: Sequelize.TEXT,
       allowNull: false,
-      validate: {
-        isUrl: true,
-      },
     });
   },
 
