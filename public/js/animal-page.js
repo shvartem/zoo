@@ -1,12 +1,10 @@
 /* eslint-disable no-use-before-define */
-document.sendToEditAnimal.addEventListener('submit', showEditForm)
+document.getElementById('sendToEditAnimal').addEventListener('click', showEditForm)
 
 
 document.editAnimalForm.addEventListener('submit', (e) => {
   e.preventDefault()
 })
-
-
 
 
 function showEditForm(e) {
@@ -17,7 +15,7 @@ function showEditForm(e) {
   const descr = document.getElementById('cardDescr').innerText
   const editForm = document.getElementById('editForm')
   document.getElementById('name').setAttribute('value', name)
-  document.getElementById('descr').setAttribute('value', descr)
+  document.getElementById('descr').innerText = descr
   e.target.parentNode.classList.add('hidden')
   cardBody.classList.add('hidden')
   editForm.classList.remove('hidden')
