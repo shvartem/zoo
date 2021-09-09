@@ -90,7 +90,7 @@ class CategoriesService {
     return { message: 'Категория удалена.' };
   }
 
-  static async findAllAnimalsByCategoryId(categoryId) {
+  async findAllAnimalsByCategoryId(categoryId) {
     let animals;
     try {
       animals = await db.Animal.findAll({
@@ -180,11 +180,38 @@ class CategoriesService {
       });
     } catch (error) {
       console.error(error);
-
       return { message: 'Не удалось удалить зверюшку.' };
     }
 
     return { message: 'Зверюшка удалена.' };
+  }
+
+  async addPhoto(animalData) {
+    const {image: photoUrl, animalId} = animalData
+    let newImage
+    try {
+      newImage = await db.Photo.create({photoUrl, animalId})
+    } catch (error) {
+      console.error(error);
+      return { message: 'Не удалось добавить фото' };
+    }
+    return newImage
+  }
+
+  async editAnimal(animalData) {
+    const {name, image, description, animalId} = animalData
+    let newImage
+    try {
+      if(image) {
+        newImage = await db.Animal.update({name, image, description}, {where: {id: animalId}})
+      } else {
+        newImage = await db.Animal.update({name, description}, {where: {id: animalId}})
+      }
+    } catch (error) {
+      console.error(error);
+      return { message: 'Не удалось обновить зверя' };
+    }
+    return newImage
   }
 }
 
