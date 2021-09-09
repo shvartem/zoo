@@ -2,7 +2,7 @@
 const db = require('../db/models');
 
 class NewsService {
-  async findAllNews() {
+  static async findAllNews() {
     let news;
 
     try {
@@ -12,11 +12,15 @@ class NewsService {
 
       return { message: 'Не удалось найти все новости.' };
     }
+    news = news.map(el => {
+      el.content = `${el.content.substring(0, 140)}...`;
+      return el
+    })
 
     return news;
   }
 
-  async findLastNews() {
+  static async findLastNews() {
     let news;
 
     try {
@@ -26,12 +30,11 @@ class NewsService {
         limit: 1,
       });
     } catch (error) {
-      console.error(error);
-
       return { message: 'Не удалось найти все новости.' };
     }
-
-    return news[0];
+    const [lastNews] = news
+    lastNews.content = `${lastNews.content.substring(0, 140)}...`;
+    return news;
   }
 
   async createNewNews({ title, content, image, adminId }) {
@@ -55,18 +58,17 @@ class NewsService {
     return news;
   }
 
-  async findNewsById(id) {
+  static async findNewsById(id) {
     let news;
 
     try {
-      news = await db.News.findOne({
+      news = await db.News.findAll({
         where: {
           id,
         },
       });
     } catch (error) {
       console.error(error);
-
       return { message: 'Не удалось найти новость.' };
     }
 

@@ -1,18 +1,15 @@
-<div class="card mx-3 border-0 rounded-3 overflow-hidden" style="width: 12rem;">
+<div class="card mx-3 border-0 rounded-3 overflow-hidden" style="width: 13rem;">
   <div class="card-body p-0">
     <div class="tariffs-img">
-      <img src="/images/tariffs/popug.png" alt="">
+      <img src="{{image}}" alt="">
     </div>
-    {{!-- <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. --}}
-    </p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">An item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
+    <li class="list-group-item" style="height: 2,5rem;"><h5>{{title}}</h5></li>
+    <li class="list-group-item" style="height: 4rem;">{{description}}</li>
+    <li class="list-group-item" style="height: 6rem;">{{condition}}</li>
+    <li class="list-group-item" style="height: 3rem;" >
+      <h4 style="height: 2rem;">{{price}} &#8381 </h4>
+    </li>
   </ul>
-  <div class="card-body">
-    <h4 class="text-warning">250</h4>
-  </div>
 </div>

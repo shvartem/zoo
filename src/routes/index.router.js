@@ -1,13 +1,15 @@
 const router = require('express').Router();
-const IndexController = require('../controllers/index.controller');
 
-const indexController = new IndexController();
+const NewsService = require('../services/news.service')
+const TariffsService = require('../services/tarifs.service');
+const PhotosService = require('../services/photos.service')
 
 router.get('/', async (req, res) => {
-  const lastNews = await indexController.getLastNews();
-  lastNews.content = `${lastNews.content.substring(0, 140)}...`;
-
-  res.render('index', { categories: req.categories, lastNews });
+  const news = await NewsService.findLastNews();
+  const tariffs = await TariffsService.getAllTarifs()
+  const images = await PhotosService.getAllPhotos()
+  console.log(images);
+  res.render('index', { categories: req.categories, news, tariffs, images });
 });
 
 module.exports = router;

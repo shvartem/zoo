@@ -3,6 +3,8 @@ const logger = require('morgan');
 const path = require('path');
 const hbs = require('hbs');
 const indexRouter = require('./routes/index.router');
+const categoriesRouter = require('./routes/categories.router')
+const newsRouter = require('./routes/news.router')
 const getAllCategories = require('./middlewares/getAllCategories.middleware');
 
 const app = express();
@@ -19,5 +21,7 @@ hbs.registerPartials(path.join(process.env.PWD, 'src/views/partials'));
 app.use(getAllCategories);
 
 app.use('/', indexRouter);
+app.use('/categories', categoriesRouter)
+app.use('/news', newsRouter)
 
 module.exports = app;
