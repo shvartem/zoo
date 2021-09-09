@@ -37,11 +37,14 @@ class NewsService {
     return news;
   }
 
-  async createNewNews({ title, content, image, adminId }) {
-    let news;
-
+  async createNews({
+    title,
+    content,
+    image,
+    adminId = 6, // не забыть убрать
+  }) {
     try {
-      news = await db.News.create({
+      const news = await db.News.create({
         title,
         content,
         image,
@@ -49,13 +52,13 @@ class NewsService {
         createdAt: Date.now(),
         updatedAt: Date.now(),
       });
+
+      return news;
     } catch (error) {
       console.error(error);
 
       return { message: 'Не удалось создать новость.' };
     }
-
-    return news;
   }
 
   static async findNewsById(id) {

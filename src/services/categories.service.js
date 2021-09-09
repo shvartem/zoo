@@ -112,12 +112,13 @@ class CategoriesService {
     return animals;
   }
 
-  async createAnimal({ name, description, categoryId }) {
+  async createAnimal({ name, description, image, categoryId }) {
     let animals;
     try {
       animals = await db.Animal.create({
         name,
         description,
+        image,
         categoryId,
       });
     } catch (error) {
