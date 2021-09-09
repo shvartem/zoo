@@ -10,16 +10,10 @@ module.exports = {
       firstName: {
         type: Sequelize.TEXT,
         allowNull: false,
-        validate: {
-          isAlpha: true,
-        },
       },
       lastName: {
         type: Sequelize.TEXT,
         allowNull: false,
-        validate: {
-          isAlpha: true,
-        },
       },
       email: {
         type: Sequelize.TEXT,
