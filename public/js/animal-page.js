@@ -14,7 +14,7 @@ document.addPhotoForm.addEventListener('submit', async (e) => {
     body: formData
   })
   if(response.ok) {
-    console.log(action.split('/'))
+    // console.log(action.split('/'))
     window.location.assign(action)
   }
 })
