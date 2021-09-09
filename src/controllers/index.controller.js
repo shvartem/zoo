@@ -7,7 +7,6 @@ class IndexController {
   async getLastNews(req, res) {
     const lastNews = await newsService.findLastNews();
     lastNews.content = `${lastNews.content.substring(0, 140)}...`;
-
     res.render('index', { categories: req.categories, lastNews });
   }
 }

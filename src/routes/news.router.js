@@ -6,14 +6,18 @@ const newsController = new NewsController();
 
 router.get('/', async (req, res) => {
   const news = await NewsService.findAllNews();
-  res.render('news', { news });
+  res.render('news', { categories: req.categories, news });
 });
 
 router.post('/', newsController.createNews);
 
 router.get('/:id', async (req, res) => {
   const news = await NewsService.findNewsById(req.params.id);
-  res.render('news', { news });
+  news[0].seeAll = true
+  if(req.session.admin) {
+    news[0].admin = true
+  }
+  res.render('news', { categories: req.categories, news });
 });
 
 module.exports = router;

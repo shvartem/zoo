@@ -1,16 +1,28 @@
 <div class='card border-0 my-5 overflow-hidden' style='width: 50rem;'>
   <div class='card-body p-0 card-inner'>
     <div class='news-img'>
-      <img src='/images/news/horses.png' alt='' />
+      <img src='{{image}}' alt='' />
     </div>
     <div class='news-content px-5 py-2'>
-      <h5 class='card-title'>{{lastNews.title}}</h5>
-
+      <h5 class='card-title'>{{title}}</h5>
       <h6 class='card-subtitle mb-2 text-muted'>Card subtitle</h6>
       <p class='card-text'>{{content}}</p>
+      {{#if seeAll}} 
+      <a href='/news' class='see-more link-secondary'>
+        Вернуться ко всем новостям
+      </a>
+      {{else}}
       <a href='/news/{{id}}' class='see-more link-secondary'>
         Узнать больше
       </a>
+      {{/if}}
+      {{#if admin}} 
+      <form action="" class="d-flex justify-content-center">
+        <button class='btn btn-outline-secondary'>
+          Редактировать
+        </button>
+      </form>
+      {{/if}}
     </div>
   </div>
 </div>

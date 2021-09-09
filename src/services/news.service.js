@@ -9,7 +9,6 @@ class NewsService {
       news = await db.News.findAll();
     } catch (error) {
       console.error(error);
-
       return { message: 'Не удалось найти все новости.' };
     }
     news = news.map((el) => {
@@ -69,6 +68,7 @@ class NewsService {
         where: {
           id,
         },
+          raw: true
       });
     } catch (error) {
       console.error(error);
