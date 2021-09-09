@@ -62,7 +62,6 @@ class CategoriesController {
 
   async deleteAnimal(req, res) {
     const {animalId} = req.params
-    console.log(animalId);
     try {
       await categoryService.deleteAnimalById(animalId)
       const { message } = 'Успешно удалено';
@@ -72,6 +71,19 @@ class CategoriesController {
       res.status(500).json({ message });
     }
   }
+
+  async getAnimalById(req, res) {
+    const {animalId} = req.params
+    const animal = await categoryService.findAnimalById(animalId)
+    const animalPhotos = await categoryService.findAnimalPhotos(animalId)
+    const [firstPhoto] = animalPhotos;
+    firstPhoto.active = true;
+    if(req.session.admin) {
+      res.render('animal', { categories: req.categories, animal, animalPhotos,  admin: req.session.admin });
+    return
+    }
+    res.render('animal', { categories: req.categories, animal, animalPhotos });
+    }
 }
 
 module.exports = CategoriesController;

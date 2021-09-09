@@ -78,31 +78,19 @@ class NewsService {
     return news;
   }
 
-  async editNewsById({ id, title, content, image, adminId }) {
-    let news;
-
+  async editNews(newsData, id) {
+    const {title, image, content} = newsData
+    let news
     try {
-      news = await db.News.update(
-        {
-          title,
-          content,
-          image,
-          adminId,
-          updatedAt: Date.now(),
-        },
-        {
-          where: {
-            id,
-          },
-        },
-      );
+      if(image) {
+        news = await db.News.update({title, image, content}, {where: {id}})
+      } 
+        news = await db.News.update({title, content}, {where: {id}})
     } catch (error) {
       console.error(error);
-
-      return { message: 'Не удалось отредактировать новость.' };
+      return { message: 'Не удалось обновить зверя' };
     }
-
-    return news;
+    return news
   }
 
   async deleteNewsById(id) {
@@ -114,7 +102,6 @@ class NewsService {
       });
     } catch (error) {
       console.error(error);
-
       return { message: 'Не удалось удалить новость.' };
     }
 

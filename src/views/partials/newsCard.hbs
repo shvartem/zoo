@@ -4,9 +4,10 @@
       <img src='{{image}}' alt='' />
     </div>
     <div class='news-content px-5 py-2'>
+      <div class="card-body-inner">
       <h5 class='card-title'>{{title}}</h5>
-      <h6 class='card-subtitle mb-2 text-muted'>Card subtitle</h6>
       <p class='card-text'>{{content}}</p>
+      </div>
       {{#if seeAll}} 
       <a href='/news' class='see-more link-secondary'>
         Вернуться ко всем новостям
@@ -17,11 +18,38 @@
       </a>
       {{/if}}
       {{#if admin}} 
-      <form action="" class="d-flex justify-content-center">
-        <button class='btn btn-outline-secondary'>
+      <div class="d-flex justify-content-center">
+        <button id="edit-news" class='m-2 btn btn-outline-secondary'>
           Редактировать
         </button>
-      </form>
+        <button id="delete-news" class='m-2 btn btn-outline-secondary'>
+          Удалить
+        </button>
+      </div>
+      <div id="editNewsForm" class="hidden">
+        <form name="editNewsForm" action="/news/{{id}}" class="m-2">
+          <input type='hidden' name='dataType' class='form-control' value='news'>
+            <div class="mb-3">
+              <label class="form-label">Название</label>
+              <input id="title" name="title" type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Cодержимое</label>
+              <textarea id="content" name="content" type="file" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Фото карточки</label>
+              <input id="image" name="image" type="file" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Подтвердить</button>
+        </form>
+      </div>
+        <div id="deleteAnimal" class="d-flex my-3 justify-content-center hidden">
+          <form name="deleteAnimalForm" action="/news/{{id}}" class="m-2 d-flex flex-column align-items-center">
+            <p>Вы уверены что хотите удалить эту новость?</p>
+            <button type="submit" class="btn btn-primary">Подтвердить</button>
+          </form>
+        </div>
       {{/if}}
     </div>
   </div>
