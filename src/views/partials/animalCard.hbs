@@ -1,15 +1,14 @@
 <div class="card border-0 m-4 overflow-hidden" style="width: 20rem;">
   <div class="card-body p-0 card-inner">
     <div class="animal-img">
-      <img src="/images/test.png" alt="">
+      <img src="{{image}}" alt="">
     </div>
     <div class="animal-content px-5 py-2">
-    <h5 class="card-title">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-      content.
+    <h5 class="card-title">{{name}}</h5>
+    <p class="card-text">{{description}}
+    <p>Царство: {{title}}</p>
     </p>
-    <a href="/categories/1/animals/1" class="see-more link-warning">Узнать больше</a>
+    <a href="/categories/{{categoryId}}/animals/{{id}}" class="see-more link-warning">Узнать больше</a>
     </div>
   </div>
 </div>

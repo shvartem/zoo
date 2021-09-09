@@ -1,12 +1,13 @@
 /* eslint-disable class-methods-use-this */
 const db = require('../db/models');
+const { sequelize } = require('../db/models')
 
 class CategoriesService {
   async findAllCategories() {
     let categories;
 
     try {
-      categories = await db.Category.findAll();
+      categories = await db.Category.findAll({raw: true});
     } catch (error) {
       console.error(error);
 
@@ -89,20 +90,25 @@ class CategoriesService {
     return { message: 'Категория удалена.' };
   }
 
-  async findAllAnimalsByCategoryId(categoryId) {
+  static async findAllAnimalsByCategoryId(categoryId) {
     let animals;
     try {
       animals = await db.Animal.findAll({
-        where: {
-          categoryId,
-        },
-      });
+        attributes: [
+        'id',
+        'name',
+        'description',
+        'image',
+        'categoryId',
+        [sequelize.literal('"Category"."title"'), 'title']], 
+        where: {categoryId}, 
+        include: {model: db.Category}, 
+        raw: true
+      })
     } catch (error) {
       console.error(error);
-
       return { message: 'Не удалось найти животных по ID категории.' };
     }
-
     return animals;
   }
 

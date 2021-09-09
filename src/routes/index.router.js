@@ -1,7 +1,8 @@
 const router = require('express').Router();
-const IndexController = require('../controllers/index.controller');
 
-const indexController = new IndexController();
+const NewsService = require('../services/news.service')
+const TariffsService = require('../services/tarifs.service');
+const PhotosService = require('../services/photos.service')
 
 router.get('/', indexController.getLastNews);
 

@@ -55,6 +55,8 @@ ul {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  color: #000;
 }
 
 .inner__container--wide {
@@ -65,18 +67,24 @@ ul {
 
 .inner__container-title {
   margin-bottom: 40px;
-}
-
-.card-inner {
-  color: #000;
+  color: #fff;
 }
 
 .news-img>img {
   max-height: 175px;
+  object-fit: cover;
 }
 
-.tariffs-img>img {
-  width: 200px;
+.tariffs-img {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.tariffs-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .galery {
@@ -90,11 +98,16 @@ ul {
 
 .galery_card {
   overflow: hidden;
+  object-fit: cover;
+  height: 300px;
+}
+
+.galery_card>img {
   height: 300px;
 }
 
 .galery_card--long {
-  height: auto;
+  height: 640px;
 }
 
 .galery_item:hover .galery_img {
@@ -107,10 +120,11 @@ ul {
 
 .galery_img {
   max-width: 100%;
-  height: auto;
+  height: 600px;
   display: block;
   transition: opacity 0.2s linear;
   width: 100%;
+  object-fit: cover;
 }
 
 .galery_info {
@@ -146,37 +160,37 @@ ul {
   grid-auto-rows: 300px
 }
 
-.one {
+.item-1 {
   grid-column: 1;
   grid-row: 1;
 }
 
-.two {
+.item-2 {
   grid-column: 2;
   grid-row: 1;
 }
 
-.three {
+.item-3 {
   grid-column: 3;
   grid-row: 1/3;
 }
 
-.four {
+.item-4 {
   grid-column: 4;
   grid-row: 1;
 }
 
-.five {
+.item-5 {
   grid-column: 1;
   grid-row: 2;
 }
 
-.six {
+.item-6 {
   grid-column: 2;
   grid-row: 2;
 }
 
-.seven {
+.item-7 {
   grid-column: 4;
   grid-row: 2;
 }
@@ -186,30 +200,6 @@ ul {
   align-items: center;
   justify-content: center;
   height: 200px;
-}
-
-.dropdown-menu li {
-  position: relative;
-}
-
-.dropdown-menu .submenu {
-  display: none;
-  position: absolute;
-  left: 100%;
-  top: -7px;
-}
-
-.dropdown-menu .submenu-left {
-  right: 100%;
-  left: auto;
-}
-
-.dropdown-menu>li:hover {
-  background-color: #f1f1f1
-}
-
-.dropdown-menu>li:hover>.submenu {
-  display: block;
 }
 
 .map {
@@ -235,18 +225,23 @@ ul {
   align-items: center;
 }
 
-.animal {
+.animal-wrapper {
   display: flex;
+  justify-content: center;
+  align-items: flex-start;
   flex-wrap: wrap;
 }
 
 .animal-img {
-  height: 300px;
+  width: 100%;
+  height: 480px;
   overflow: hidden;
 }
 
-.animal-img>img {
-  width: 320px;
+.animal-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .animal-info {
@@ -278,6 +273,27 @@ ul {
 }
 
 .admin-container {
-  width: 50%;
+  width: 60%;
   margin: 50px auto;
+}
+
+.carousel-item {
+  width: 500;
+  height: auto;
+}
+
+.carousel-item img {
+  height: 400px;
+  object-fit: cover;
+}
+
+.animalCard-img {
+  max-width: 40%;
+  overflow: hidden;
+}
+
+.animalCard-img>img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
 }
