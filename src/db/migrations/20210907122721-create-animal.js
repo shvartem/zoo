@@ -18,9 +18,6 @@ module.exports = {
       image: {
         type: Sequelize.TEXT,
         allowNull: false,
-        validate: {
-          isUrl: true,
-        },
       },
       categoryId: {
         type: Sequelize.INTEGER,

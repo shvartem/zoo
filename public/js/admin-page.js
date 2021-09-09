@@ -3,16 +3,11 @@ const { addAnimalForm, addEmployeeForm, addTariffForm, addNewsForm } = document;
 addAnimalForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const formData = Object.fromEntries(new FormData(e.target));
-  formData.categoryId = Number(formData.categoryId);
-  console.log(formData);
+  const formData = new FormData(e.target);
 
   const response = await fetch(`/categories/${formData.categoryId}/animals`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(formData),
+    body: formData,
   });
 
   if (response.ok) {
@@ -43,15 +38,11 @@ addEmployeeForm.addEventListener('submit', async (e) => {
 addTariffForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const formData = Object.fromEntries(new FormData(e.target));
+  const formData = new FormData(e.target);
 
-  console.log({ formData });
   const response = await fetch(`/tariffs`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(formData),
+    body: formData,
   });
 
   if (response.ok) {
@@ -63,15 +54,11 @@ addTariffForm.addEventListener('submit', async (e) => {
 addNewsForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const formData = Object.fromEntries(new FormData(e.target));
+  const formData = new FormData(e.target);
 
-  console.log({ formData });
   const response = await fetch(`/news`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(formData),
+    body: formData,
   });
 
   if (response.ok) {

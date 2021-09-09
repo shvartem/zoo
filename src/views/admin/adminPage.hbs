@@ -65,20 +65,38 @@
       aria-labelledby='add-animal'
     >
       <div class='bg-dark'>
-        <form name='addAnimalForm'>
+        <form name='addAnimalForm' enctype='multipart/form-data'>
           <div class='mb-3'>
-            <label class='form-label'>Имя ж</label>
+            <input
+              type='hidden'
+              name='dataType'
+              class='form-control'
+              value='animals'
+            />
+          </div>
+
+          <div class='mb-3'>
+            <label class='form-label'>Категория</label>
+            <select
+              name='categoryId'
+              class='form-select'
+              aria-label='Default select example'
+            >
+              <option selected disabled>Выберите категорию</option>
+              {{#each categories}}
+                <option value='{{this.id}}'>{{this.title}}</option>
+              {{/each}}
+            </select>
+          </div>
+
+          <div class='mb-3'>
+            <label class='form-label'>Название животного</label>
             <input
               type='text'
               name='name'
               class='form-control'
               aria-describedby='emailHelp'
             />
-          </div>
-
-          <div class='mb-3'>
-            <label class='form-label'>Фото</label>
-            <input type='url' name='image' class='form-control' />
           </div>
 
           <div class='mb-3'>
@@ -95,17 +113,8 @@
           </div>
 
           <div class='mb-3'>
-            <label class='form-label'>Категория</label>
-            <select
-              name='categoryId'
-              class='form-select'
-              aria-label='Default select example'
-            >
-              <option selected disabled>Выберите категорию</option>
-              {{#each categories}}
-                <option value='{{this.id}}'>{{this.title}}</option>
-              {{/each}}
-            </select>
+            <label class='form-label'>Фото</label>
+            <input type='file' name='image' class='form-control' />
           </div>
 
           <button type='submit' class='btn btn-primary'>Submit</button>
@@ -190,6 +199,15 @@
       <div class='bg-dark'>
         <form name='addTariffForm'>
           <div class='mb-3'>
+            <input
+              type='hidden'
+              name='dataType'
+              class='form-control'
+              value='tariffs'
+            />
+          </div>
+
+          <div class='mb-3'>
             <label class='form-label'>Название тарифа</label>
             <input
               type='text'
@@ -197,11 +215,6 @@
               class='form-control'
               aria-describedby='emailHelp'
             />
-          </div>
-
-          <div class='mb-3'>
-            <label class='form-label'>Изображение для тарифа</label>
-            <input type='url' name='image' class='form-control' />
           </div>
 
           <div class='mb-3'>
@@ -236,6 +249,11 @@
             <input type='number' name='price' class='form-control' />
           </div>
 
+          <div class='mb-3'>
+            <label class='form-label'>Изображение для тарифа</label>
+            <input type='file' name='image' class='form-control' />
+          </div>
+
           <button type='submit' class='btn btn-primary'>Submit</button>
         </form>
       </div>
@@ -249,6 +267,15 @@
     >
       <div class='bg-dark'>
         <form name='addNewsForm'>
+          <div class='mb-3'>
+            <input
+              type='hidden'
+              name='dataType'
+              class='form-control'
+              value='news'
+            />
+          </div>
+
           <div class='mb-3'>
             <label class='form-label'>Заголовок</label>
             <input
@@ -274,7 +301,7 @@
 
           <div class='mb-3'>
             <label class='form-label'>Фото</label>
-            <input type='url' name='image' class='form-control' />
+            <input type='file' name='image' class='form-control' />
           </div>
 
           <button type='submit' class='btn btn-primary'>Submit</button>

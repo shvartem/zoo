@@ -5,7 +5,8 @@ const tariffsService = new TariffsService();
 
 class TariffsController {
   async createNewTariff(req, res) {
-    console.log(req.body);
+    const tariffData = req.body;
+    tariffData.image = req.file.path.replace(/^public\//, '');
     const newTariff = await tariffsService.createNewTariff(req.body);
 
     res.status(201).json(newTariff);
