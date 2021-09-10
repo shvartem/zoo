@@ -15,24 +15,39 @@
           </div>
           {{#if admin}} 
               <div class="d-flex flex-wrap">
-                  <button id="sendToEditAnimal" class='mx-2 btn btn-outline-secondary'>
+                <button type="button" class="mx-2 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#editAnimalForm">
                     Редактировать
-                  </button>
-                  <button id="sendToDeleteForm" class='mx-2 btn btn-outline-secondary'>
+                </button>
+                <button type="button" class="mx-2 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#deleteAnimalForm">
                     Удалить
-                  </button>
-                  <button id="sendToAddPhoto" class='m-2 btn btn-outline-secondary'>
+                </button>
+                <button type="button" class="mx-2 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#addPhotoForm">
                     Добавить фото в галерею
-                  </button>
+                </button>
+                
               </div>
-              <div id="editForm" class="d-flex my-3 justify-content-center hidden">
-                <form name="editAnimalForm" action="/categories/{{animal.categoryId}}/animals/{{animal.id}}" method="PUT" class="m-2">
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editAnimalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Редактировать</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/categories/{{animal.categoryId}}/animals/{{animal.id}}" method="PUT" class="m-2 editAnimalForm">
                 <div class="mb-3">
                   <label class="form-label">Название</label>
-                  <input id="name" name="name" type="text" class="form-control">
+                  <input value="{{animal.name}}" name="name" type="text" class="form-control">
                 </div>
                 <div class="mb-3">
-                  <textarea name="description" id="descr" cols="35" rows="2"></textarea>
+                  <textarea name="description" id="descr" cols="35" rows="2">{{animal.description}}</textarea>
                 </div>
                 <input name="dataType" type="hidden" class="form-control" value='animals'>
                 <input name="animalId" type="hidden" class="form-control" value={{animal.id}}>
@@ -42,9 +57,37 @@
                 </div>
                 <button type="submit" class="btn btn-secondary">Подтвердить</button>
                 </form>
-              </div>
-              <div id="addPhoto" class="d-flex my-3 justify-content-center hidden">
-                <form name="addPhotoForm" action="/categories/{{animal.categoryId}}/animals/{{animal.id}}/photos" class="m-2">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteAnimalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Удалить</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/categories/{{animal.categoryId}}/animals/{{animal.id}}" class="m-2 deleteAnimalForm">
+                  <p>Вы уверены что хотите удалить карточку: {{animal.name}}</p>
+                  <button type="submit" class="btn btn-secondary">Подтвердить</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="addPhotoForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Добавить фото в галерею</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/categories/{{animal.categoryId}}/animals/{{animal.id}}/photos" class="m-2 addPhotoForm">
                   <input type='hidden' name='dataType' class='form-control' value='animals'>
                   <input name="animalId" type="hidden" class="form-control" value={{animal.id}}>
                   <div class="mb-3">
@@ -53,15 +96,6 @@
                   </div>
                   <button type="submit" class="btn btn-secondary">Подтвердить</button>
                 </form>
-              </div>
-              <div id="deleteAnimal" class="d-flex my-3 justify-content-center hidden">
-                <form name="deleteAnimalForm" action="/categories/{{animal.categoryId}}/animals/{{animal.id}}" class="m-2">
-                  <p>Вы уверены что хотите удалить карточку: {{animal.name}}</p>
-                  <button type="submit" class="btn btn-secondary">Подтвердить</button>
-                </form>
-              </div>
-          {{/if}}
-        </div>
       </div>
     </div>
   </div>
@@ -95,4 +129,3 @@
     </div>
 </div>
 {{/if}}
-
