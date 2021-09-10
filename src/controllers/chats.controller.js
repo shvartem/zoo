@@ -2,7 +2,7 @@
 
 class ChatsController {
   renderChat(req, res) {
-    res.render('chat');
+    res.render('chat', {categories: req.categories});
   }
 }
 
