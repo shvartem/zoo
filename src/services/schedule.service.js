@@ -6,6 +6,7 @@ class SchedulesService {
   static async getSchedule() {
     try {
       const schedule = await db.Schedule.findOne();
+
       if (!schedule) {
         return {
           weekdaysOpening: '09:00',
@@ -14,6 +15,7 @@ class SchedulesService {
           weekendClosing: '21:00',
         };
       }
+
       for (const key in schedule.dataValues) {
         if (
           schedule.dataValues.hasOwnProperty(key) &&
