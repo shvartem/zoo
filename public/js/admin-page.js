@@ -115,3 +115,33 @@ editScheduleForm.addEventListener('submit', async (e) => {
     const data = await response.json();
   }
 });
+
+document.addEventListener('submit', async (e) => {
+  if(e.target.matches('.editStaffForm')) {
+    e.preventDefault()
+    const formData = new FormData(e.target);
+    const {action} = e.target;
+    const response = await fetch(action, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(Object.fromEntries(formData)),
+    })
+    if(response.ok) {
+      const data = await response.json()
+      console.log(data);
+    }
+  }
+  if(e.target.matches('.deleteStaffForm')) {
+    e.preventDefault()
+    console.log(1111111);
+    const {action} = e.target;
+    const response = await fetch(action, {
+      method: 'DELETE',
+    })
+    if(response.ok) {
+      console.log('ok');
+    }
+  }
+})

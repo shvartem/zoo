@@ -144,11 +144,25 @@ module.exports = {
           categoryId: '5',
         },
         {
-          name: 'Золотая рыбка',
+          name: 'Белый Медведь',
           description: 'McCullough',
           image:
-            'https://images.unsplash.com/photo-1599601619121-1b6e770b15ca?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Z29sZGVuJTIwZmlzaHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-          categoryId: '5',
+            'https://images.unsplash.com/photo-1593946460607-d1570da6268f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+          categoryId: '1',
+        },
+        {
+          name: 'Пума',
+          description: 'McCullough',
+          image:
+            'https://images.unsplash.com/photo-1527720255604-b27935ade401?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+          categoryId: '1',
+        },
+        {
+          name: 'Амурский тигр',
+          description: 'McCullough',
+          image:
+            'https://images.unsplash.com/photo-1535684405415-f991bbab0866?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1028&q=80',
+          categoryId: '1',
         },
       ],
       {},
