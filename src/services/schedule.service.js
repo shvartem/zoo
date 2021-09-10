@@ -1,12 +1,12 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable class-methods-use-this */
 const db = require('../db/models');
-const { sequelize } = require('../db/models');
 
 class SchedulesService {
   static async getSchedule() {
     try {
       const schedule = await db.Schedule.findOne();
+      if (!schedule) return {};
       for (const key in schedule.dataValues) {
         if (
           schedule.dataValues.hasOwnProperty(key) &&
