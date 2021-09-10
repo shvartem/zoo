@@ -275,13 +275,16 @@ ul {
   padding: 30px;
 }
 
+.staff-card {
+  color: #000
+}
 .animal_carousel {
   width: 70%;
   margin: 40px auto;
 }
 
 .admin-container {
-  width: 60%;
+  width: 80%;
   margin: 50px auto;
 }
 
