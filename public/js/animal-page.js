@@ -14,8 +14,9 @@ document.addPhotoForm.addEventListener('submit', async (e) => {
     body: formData
   })
   if(response.ok) {
-    // console.log(action.split('/'))
-    window.location.assign(action)
+    const path = action.split('/')
+    path.pop()
+    window.location.assign(path.join('/'))
   }
 })
 
@@ -28,7 +29,6 @@ document.editAnimalForm.addEventListener('submit', async (e) => {
     body: formData
   })
   if(response.ok) {
-    console.log(response)
     window.location.href = action
   }
 })

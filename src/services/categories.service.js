@@ -130,45 +130,35 @@ class CategoriesService {
     return animals;
   }
 
-  async findAnimalById(id) {
+  async findAnimalById(animalId) {
     let animal;
     try {
       animal = await db.Animal.findOne({
-        where: {
-          id,
-        },
-      });
+      where: { id: animalId },
+      include: { model: db.Category },
+      raw: true,
+    });
+    const category = animal['Category.title'];
+    animal.category = category;
     } catch (error) {
       console.error(error);
-
       return { message: 'Не удалось вычислить зверюшку по ID.' };
     }
-
     return animal;
   }
 
-  async editAnimalById({ id, name, description, categoryId }) {
-    let animal;
+  async findAnimalPhotos(animalId) {
+    let animalPhotos;
     try {
-      animal = await db.Animal.update(
-        {
-          name,
-          description,
-          categoryId,
-        },
-        {
-          where: {
-            id,
-          },
-        },
-      );
+    animalPhotos = await db.Photo.findAll({
+          where: { animalId },
+          raw: true,
+      });
+      console.log(1, animalPhotos);
     } catch (error) {
       console.error(error);
-
-      return { message: 'Не удалось отредактировать зверюшку.' };
     }
-
-    return animal;
+    return animalPhotos || []
   }
 
   async deleteAnimalById(id) {

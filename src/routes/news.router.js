@@ -11,7 +11,8 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', upload.single('image'), newsController.createNews);
-
+router.put('/:id', upload.single('image'), newsController.editNews);
+router.delete('/:id', newsController.deleteNews)
 router.get('/:id', async (req, res) => {
   const news = await NewsService.findNewsById(req.params.id);
   news[0].seeAll = true
@@ -20,5 +21,7 @@ router.get('/:id', async (req, res) => {
   }
   res.render('news', { categories: req.categories, news });
 });
+
+
 
 module.exports = router;
