@@ -27,6 +27,9 @@ const tariffsRouter = require('./routes/tariffs.router');
 const newsRouter = require('./routes/news.router');
 const scheduleRouter = require('./routes/schedule.router');
 
+const chatRouter = require('./routes/chats.router');
+const staffRouter = require('./routes/staff.router')
+
 const app = express();
 app.use(session(sessionConfig));
 
@@ -47,5 +50,9 @@ app.use('/categories', categoriesRouter);
 app.use('/tariffs', tariffsRouter);
 app.use('/news', newsRouter);
 app.use('/schedule', scheduleRouter);
+
+app.use('/chat', chatRouter);
+app.use('/staff', staffRouter)
+
 
 module.exports = app;
