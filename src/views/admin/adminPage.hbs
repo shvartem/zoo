@@ -15,18 +15,18 @@
       >Добавить животное</button>
     </li>
     {{#if admin.isSuperAdmin}}
-    <li class='nav-item' role='presentation'>
-      <button
-        class='nav-link'
-        id='addEmployeeButton'
-        data-bs-toggle='tab'
-        data-bs-target='#addEmployee'
-        type='button'
-        role='tab'
-        aria-controls='addEmployee'
-        aria-selected='false'
-      >Добавить Сотрудника</button>
-    </li>
+      <li class='nav-item' role='presentation'>
+        <button
+          class='nav-link'
+          id='addEmployeeButton'
+          data-bs-toggle='tab'
+          data-bs-target='#addEmployee'
+          type='button'
+          role='tab'
+          aria-controls='addEmployee'
+          aria-selected='false'
+        >Добавить Сотрудника</button>
+      </li>
     {{/if}}
     <li class='nav-item' role='presentation'>
       <button
@@ -52,8 +52,29 @@
         aria-selected='false'
       >Добавить новость</button>
     </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Выйти</button>
+    <li class='nav-item' role='presentation'>
+      <button
+        class='nav-link'
+        id='editScheduleButton'
+        data-bs-toggle='tab'
+        data-bs-target='#editSchedule'
+        type='button'
+        role='tab'
+        aria-controls='editSchedule'
+        aria-selected='false'
+      >Редактировать график работы</button>
+    </li>
+    <li class='nav-item' role='presentation'>
+      <button
+        class='nav-link'
+        id='settings-tab'
+        data-bs-toggle='tab'
+        data-bs-target='#settings'
+        type='button'
+        role='tab'
+        aria-controls='settings'
+        aria-selected='false'
+      >Выйти</button>
     </li>
   </ul>
 
@@ -308,9 +329,83 @@
         </form>
       </div>
     </div>
-    <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+
+    <div
+      class='tab-pane fade'
+      id='editSchedule'
+      role='tabpanel'
+      aria-labelledby='add-news'
+    >
+      <div class='bg-dark'>
+        <form name='editScheduleForm'>
+          <div class='mb-5'>
+            <label class='form-label'>Будни</label>
+            <div class='d-flex justify-content-around'>
+              <div>
+                <label class='d-inline-block form-label pr-3'>Открытие</label>
+                <input
+                  type='text'
+                  name='weekdaysOpening'
+                  class='d-inline-block form-control pr-3'
+                  aria-describedby='newsHelp'
+                  style='width:150px'
+                />
+              </div>
+
+              <div>
+                <label class='d-inline-block form-label'>Закрытие</label>
+                <input
+                  type='text'
+                  name='weekdaysClosing'
+                  class='d-inline-block form-control'
+                  aria-describedby='newsHelp'
+                  style='width:150px'
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class='mb-3'>
+            <label class='form-label'>Выходные</label>
+            <div class='d-flex justify-content-around'>
+              <div>
+                <label class='d-inline-block form-label'>Открытие</label>
+                <input
+                  type='text'
+                  name='weekendOpening'
+                  class='d-inline-block form-control'
+                  aria-describedby='newsHelp'
+                  style='width:150px'
+                />
+              </div>
+
+              <div>
+                <label class='form-label'>Закрытие</label>
+                <input
+                  type='text'
+                  name='weekendClosing'
+                  class='d-inline-block form-control'
+                  aria-describedby='newsHelp'
+                  style='width:150px'
+                />
+              </div>
+            </div>
+
+          </div>
+
+          <button type='submit' class='btn btn-primary'>Редактировать</button>
+        </form>
+      </div>
+    </div>
+
+    <div
+      class='tab-pane'
+      id='settings'
+      role='tabpanel'
+      aria-labelledby='settings-tab'
+    >
       <p>Вы уверены что хотите выйти?</p>
-      <a href="/admins/logout" class="btn btn-primary">Выйти</a>
+      <a href='/admins/logout' class='btn btn-primary'>Выйти</a>
     </div>
   </div>
 </div>

@@ -1,3 +1,5 @@
+<script defer src="/js/news-page.js"></script>
+
 <div class='card border-0 my-5 overflow-hidden' style='width: 50rem;'>
   <div class='card-body p-0 card-inner'>
     <div class='news-img'>
@@ -19,23 +21,50 @@
       {{/if}}
       {{#if admin}} 
       <div class="d-flex justify-content-center">
-        <button id="edit-news" class='m-2 btn btn-outline-secondary'>
-          Редактировать
+        <button type="button" class="m-2 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#showEditModel">
+            Редактировать
         </button>
-        <button id="delete-news" class='m-2 btn btn-outline-secondary'>
-          Удалить
+        <button type="button" class="m-2 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#showDeleteModel">
+            Удалить
         </button>
       </div>
-      <div id="editNewsForm" class="hidden">
-        <form name="editNewsForm" action="/news/{{id}}" class="m-2">
+      
+
+<div class="modal fade" id="showDeleteModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Удаление новости</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form action="/news/{{id}}" class="m-2 d-flex flex-column align-items-center deleteAnimalForm">
+            <p>Вы уверены что хотите удалить эту новость?</p>
+            <button type="submit" class="btn btn-primary">Подтвердить</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="modal fade" id="showEditModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Редактировать новость</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/news/{{id}}" class="m-2 editNewsForm">
           <input type='hidden' name='dataType' class='form-control' value='news'>
             <div class="mb-3">
               <label class="form-label">Название</label>
-              <input id="title" name="title" type="text" class="form-control">
+              <input id="title" name="title" type="text" class="form-control" value="{{title}}">
             </div>
             <div class="mb-3">
               <label class="form-label">Cодержимое</label>
-              <textarea id="content" name="content" type="file" class="form-control"></textarea>
+              <textarea id="content" name="content" type="file" class="form-control">{{content}}</textarea>
             </div>
             <div class="mb-3">
               <label class="form-label">Фото карточки</label>
@@ -44,13 +73,11 @@
             <button type="submit" class="btn btn-primary">Подтвердить</button>
         </form>
       </div>
-        <div id="deleteAnimal" class="d-flex my-3 justify-content-center hidden">
-          <form name="deleteAnimalForm" action="/news/{{id}}" class="m-2 d-flex flex-column align-items-center">
-            <p>Вы уверены что хотите удалить эту новость?</p>
-            <button type="submit" class="btn btn-primary">Подтвердить</button>
-          </form>
-        </div>
+    </div>
+  </div>
+</div>
       {{/if}}
     </div>
   </div>
 </div>
+

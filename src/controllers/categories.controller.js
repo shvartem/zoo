@@ -36,7 +36,7 @@ class CategoriesController {
 
   async addPhotoForAnimal(req, res) {
     const animalData = req.body;
-    animalData.image = req.file.path.replace(/^public\//, '');
+    animalData.image = req.file.path.replace(/^public/, '');
     try {
       const newPhoto = await categoryService.addPhoto(animalData)
       res.status(200).json({ newPhoto });
@@ -49,7 +49,7 @@ class CategoriesController {
   async editAnimal(req, res) {
     const animalData = req.body;
     if(req.file) {
-      animalData.image = req.file.path.replace(/^public\//, '');
+      animalData.image = req.file.path.replace(/^public/, '');
     }
     try {
       const editedAnimal = await categoryService.editAnimal(animalData)
@@ -75,9 +75,12 @@ class CategoriesController {
   async getAnimalById(req, res) {
     const {animalId} = req.params
     const animal = await categoryService.findAnimalById(animalId)
-    const animalPhotos = await categoryService.findAnimalPhotos(animalId)
-    const [firstPhoto] = animalPhotos;
-    firstPhoto.active = true;
+    let animalPhotos = await categoryService.findAnimalPhotos(animalId)
+    if(animalPhotos.length) {
+      const [firstPhoto] = animalPhotos;
+      firstPhoto.active = true;
+    } 
+    animalPhotos = animalPhotos.length ? animalPhotos: false
     if(req.session.admin) {
       res.render('animal', { categories: req.categories, animal, animalPhotos,  admin: req.session.admin });
     return

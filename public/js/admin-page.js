@@ -1,4 +1,33 @@
-const { addAnimalForm, addEmployeeForm, addTariffForm, addNewsForm } = document;
+const {
+  addAnimalForm,
+  addEmployeeForm,
+  addTariffForm,
+  addNewsForm,
+  editScheduleForm,
+} = document;
+
+async function getSchedule() {
+  const response = await fetch('/schedule');
+
+  if (response.ok) {
+    const data = await response.json();
+
+    return data;
+  }
+  return [];
+}
+
+async function setScheduleFormValues() {
+  const schedule = await getSchedule();
+  const scheduleEntries = Object.entries(schedule);
+
+  scheduleEntries.forEach((item) => {
+    const [name, time] = item;
+    editScheduleForm[name].value = time;
+  });
+}
+
+setScheduleFormValues();
 
 addAnimalForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -64,5 +93,25 @@ addNewsForm.addEventListener('submit', async (e) => {
   if (response.ok) {
     const data = await response.json();
     console.log({ data });
+  }
+});
+
+editScheduleForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const formData = Object.fromEntries(new FormData(e.target));
+
+  console.log(formData);
+
+  const response = await fetch(`/schedule`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
   }
 });
