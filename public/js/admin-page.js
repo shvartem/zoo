@@ -20,7 +20,6 @@ async function getSchedule() {
 async function setScheduleFormValues() {
   const schedule = await getSchedule();
   const scheduleEntries = Object.entries(schedule);
-  scheduleEntries.shift();
 
   scheduleEntries.forEach((item) => {
     const [name, time] = item;
