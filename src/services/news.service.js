@@ -6,7 +6,9 @@ class NewsService {
     let news;
 
     try {
-      news = await db.News.findAll();
+      news = await db.News.findAll({
+        order: [['id', 'DESC']],
+      });
     } catch (error) {
       console.error(error);
       return { message: 'Не удалось найти все новости.' };
@@ -68,7 +70,7 @@ class NewsService {
         where: {
           id,
         },
-          raw: true
+        raw: true,
       });
     } catch (error) {
       console.error(error);
@@ -79,18 +81,21 @@ class NewsService {
   }
 
   async editNews(newsData, id) {
-    const {title, image, content} = newsData
-    let news
+    const { title, image, content } = newsData;
+    let news;
     try {
-      if(image) {
-        news = await db.News.update({title, image, content}, {where: {id}})
-      } 
-        news = await db.News.update({title, content}, {where: {id}})
+      if (image) {
+        news = await db.News.update(
+          { title, image, content },
+          { where: { id } },
+        );
+      }
+      news = await db.News.update({ title, content }, { where: { id } });
     } catch (error) {
       console.error(error);
       return { message: 'Не удалось обновить зверя' };
     }
-    return news
+    return news;
   }
 
   async deleteNewsById(id) {

@@ -1,13 +1,13 @@
 /* eslint-disable class-methods-use-this */
 const db = require('../db/models');
-const { sequelize } = require('../db/models')
+const { sequelize } = require('../db/models');
 
 class CategoriesService {
   async findAllCategories() {
     let categories;
 
     try {
-      categories = await db.Category.findAll({raw: true});
+      categories = await db.Category.findAll({ raw: true });
     } catch (error) {
       console.error(error);
 
@@ -95,16 +95,18 @@ class CategoriesService {
     try {
       animals = await db.Animal.findAll({
         attributes: [
-        'id',
-        'name',
-        'description',
-        'image',
-        'categoryId',
-        [sequelize.literal('"Category"."title"'), 'title']], 
-        where: {categoryId}, 
-        include: {model: db.Category}, 
-        raw: true
-      })
+          'id',
+          'name',
+          'description',
+          'image',
+          'categoryId',
+          [sequelize.literal('"Category"."title"'), 'title'],
+        ],
+        where: { categoryId },
+        include: { model: db.Category },
+        order: [['id', 'ASC']],
+        raw: true,
+      });
     } catch (error) {
       console.error(error);
       return { message: 'Не удалось найти животных по ID категории.' };
@@ -134,12 +136,12 @@ class CategoriesService {
     let animal;
     try {
       animal = await db.Animal.findOne({
-      where: { id: animalId },
-      include: { model: db.Category },
-      raw: true,
-    });
-    const category = animal['Category.title'];
-    animal.category = category;
+        where: { id: animalId },
+        include: { model: db.Category },
+        raw: true,
+      });
+      const category = animal['Category.title'];
+      animal.category = category;
     } catch (error) {
       console.error(error);
       return { message: 'Не удалось вычислить зверюшку по ID.' };
@@ -150,15 +152,15 @@ class CategoriesService {
   async findAnimalPhotos(animalId) {
     let animalPhotos;
     try {
-    animalPhotos = await db.Photo.findAll({
-          where: { animalId },
-          raw: true,
+      animalPhotos = await db.Photo.findAll({
+        where: { animalId },
+        raw: true,
       });
       console.log(1, animalPhotos);
     } catch (error) {
       console.error(error);
     }
-    return animalPhotos || []
+    return animalPhotos || [];
   }
 
   async deleteAnimalById(id) {
@@ -177,31 +179,37 @@ class CategoriesService {
   }
 
   async addPhoto(animalData) {
-    const {image: photoUrl, animalId} = animalData
-    let newImage
+    const { image: photoUrl, animalId } = animalData;
+    let newImage;
     try {
-      newImage = await db.Photo.create({photoUrl, animalId})
+      newImage = await db.Photo.create({ photoUrl, animalId });
     } catch (error) {
       console.error(error);
       return { message: 'Не удалось добавить фото' };
     }
-    return newImage
+    return newImage;
   }
 
   async editAnimal(animalData) {
-    const {name, image, description, animalId} = animalData
-    let newImage
+    const { name, image, description, animalId } = animalData;
+    let newImage;
     try {
-      if(image) {
-        newImage = await db.Animal.update({name, image, description}, {where: {id: animalId}})
+      if (image) {
+        newImage = await db.Animal.update(
+          { name, image, description },
+          { where: { id: animalId } },
+        );
       } else {
-        newImage = await db.Animal.update({name, description}, {where: {id: animalId}})
+        newImage = await db.Animal.update(
+          { name, description },
+          { where: { id: animalId } },
+        );
       }
     } catch (error) {
       console.error(error);
       return { message: 'Не удалось обновить зверя' };
     }
-    return newImage
+    return newImage;
   }
 }
 

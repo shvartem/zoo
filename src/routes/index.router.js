@@ -5,7 +5,7 @@ const TariffsService = require('../services/tariffs.service');
 const PhotosService = require('../services/photos.service');
 const SchedulesService = require('../services/schedule.service');
 
-const tariffsService = new TariffsService()
+const tariffsService = new TariffsService();
 
 router.get('/', async (req, res) => {
   const news = await NewsService.findLastNews();

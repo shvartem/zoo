@@ -1,4 +1,5 @@
 /* eslint-disable class-methods-use-this */
+const db = require('../db/models');
 const AdminsService = require('../services/admins.service');
 const CategoriesService = require('../services/categories.service');
 
@@ -7,16 +8,23 @@ const categoriesService = new CategoriesService();
 
 class AdminsController {
   async renderLoginPage(req, res) {
-    console.log(req.body);
+    
     // const admin = await adminsService.findAdminByEmail(email);
-
     res.render('admin/adminLogin');
   }
 
   async renderAdminPage(req, res) {
+    let admins;
+    try {
+      admins = await db.Admin.findAll({raw:true})
+    }
+    catch (error) {
+      const { message } = error;
+      console.error(message);
+    }
     // const admin = await adminsService.findAdminByEmail(email);
     if(req.session.admin) {
-      res.render('admin/adminPage', { categories: req.categories, admin: req.session.admin });
+      res.render('admin/adminPage', { categories: req.categories, admin: req.session.admin, admins });
       return
     }
     res.redirect('/admins/login')

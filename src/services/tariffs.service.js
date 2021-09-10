@@ -5,7 +5,7 @@ class TariffsService {
     async getAllTarifs() {
     let tariffs;
     try {
-      tariffs = await db.Tariff.findAll({attributes: ['id', 'title', 'description','condition', 'price','image'], raw: true})
+      tariffs = await db.Tariff.findAll({attributes: ['id', 'title', 'description','condition', 'price','image'], raw: true, order: [['id', 'ASC']]})
     }
     catch(e) {
        console.error(error);
