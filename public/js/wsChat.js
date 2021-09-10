@@ -1,6 +1,6 @@
 const ws = new WebSocket('ws://localhost:3000/chat/');
 const { chatForm } = document;
-const messageContainer = document.querySelector('.message-container');
+const messagesContainer = document.querySelector('.chat__messages');
 const messageTemplate = document
   .getElementById('message-template')
   .content.querySelector('.message');
@@ -8,22 +8,24 @@ const messageTemplate = document
 function dispatchEvent(message) {
   const parsed = JSON.parse(message.data);
 
-  function createMessage(author, text) {
-    console.log(author, text);
+  function createMessage(author, text, date) {
     const messageElement = messageTemplate.cloneNode(true);
 
     const authorElement = messageElement.querySelector('.message__author');
     const textElement = messageElement.querySelector('.message__text');
+    const dateElement = messageElement.querySelector('.message__date');
 
     authorElement.textContent = author;
     textElement.textContent = text;
+    dateElement.textContent = date;
 
     chatForm.text.value = '';
-    messageContainer.append(messageElement);
+    messagesContainer.prepend(messageElement);
   }
 
   switch (parsed.type) {
     case 'ADDED_MESSAGE':
+      console.log(parsed.payload);
       createMessage(parsed.payload.author, parsed.payload.text);
       break;
 
@@ -43,12 +45,10 @@ chatForm.addEventListener('submit', async (e) => {
     text: { value: text },
   } = e.target;
 
-  console.log(author);
-
   ws.send(
     JSON.stringify({
       type: 'NEW_MESSAGE',
-      payload: { author, text },
+      payload: { author, text, date: new Date().toLocaleString('ru-RU') },
     }),
   );
 });

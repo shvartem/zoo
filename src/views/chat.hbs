@@ -1,7 +1,7 @@
 <script defer src='/js/wsChat.js'></script>
 
-<div class='admin-container'>
-  <form class='bg-dark' name='chatForm'>
+<div class='chat-container chat'>
+  <form class='bg-dark form chat__form px-3' name='chatForm'>
     <div class='mb-3'>
       <label for='author' class='form-label'>Имя</label>
       <input
@@ -19,16 +19,31 @@
     </div>
     <button type='submit' class='btn btn-primary'>Отправить сообщение</button>
   </form>
-</div>
 
-<div class='messages'>
-  <div class='message-container'>
+  <div class='msger-chat'>
+    <div class='msg left-msg'>
+      <div class='msg-bubble'>
+        <div class='msg-info'>
+          <div class='msg-info-name message__author'>BOT</div>
+          <div class='msg-info-time message__date'>12:45</div>
+        </div>
 
+        <div class='msg-text message__text'>
+          Hi, welcome to SimpleChat! Go ahead and send me a message. 😄
+        </div>
+      </div>
+    </div>
   </div>
+
 </div>
+
 <template id='message-template'>
   <div class='message'>
-    <h3 class='message__author'></h3>
-    <p class='message__text'></p>
+    <div class='message__header'>
+      <img src='' class='rounded me-2' alt='...' />
+      <strong class='message__author'></strong>
+      <small class='message__date'></small>
+    </div>
+    <div class='message__text'></div>
   </div>
 </template>

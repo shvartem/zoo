@@ -8,8 +8,7 @@
 }
 
 body {
-  font-family: 'Source Code Pro',
-    monospace;
+  font-family: 'Source Code Pro', monospace;
   font-weight: 400;
 }
 
@@ -19,8 +18,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Bitter',
-    serif;
+  font-family: 'Bitter', serif;
   font-weight: 700;
 }
 
@@ -75,7 +73,7 @@ ul {
   overflow: hidden;
 }
 
-.news-img>img {
+.news-img > img {
   width: 100%;
   max-height: 175px;
   object-fit: cover;
@@ -108,7 +106,7 @@ ul {
   height: 300px;
 }
 
-.galery_card>img {
+.galery_card > img {
   height: 300px;
 }
 
@@ -163,7 +161,7 @@ ul {
   display: grid;
   grid-gap: 0;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 300px
+  grid-auto-rows: 300px;
 }
 
 .item-1 {
@@ -261,7 +259,7 @@ ul {
   overflow: hidden;
 }
 
-.animal-img>img {
+.animal-img > img {
   width: 320px;
 }
 
@@ -298,7 +296,7 @@ ul {
   overflow: hidden;
 }
 
-.animalCard-img>img {
+.animalCard-img > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -309,5 +307,97 @@ ul {
 }
 
 #editTariffModal {
+  color: #000;
+}
+
+.chat-container {
+  width: 60%;
+  max-width: 960px;
+  height: 50vh;
+  margin: 50px auto;
+  display: flex;
+}
+
+.chat__form {
+  width: 40%;
+}
+
+.chat__messages {
+  width: 60%;
+}
+/*
+.messages {
+  background-color: #fff;
+  border-radius: 8px;
+  height: 100%;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message {
+  border: #000;
+  border-radius: 8px;
+  box-shadow: 0 0 5px #000;
+  width: 100%;
+  color: #000;
+} */
+.msger-chat {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  background: #fff;
+}
+.msger-chat::-webkit-scrollbar {
+  width: 6px;
+}
+.msger-chat::-webkit-scrollbar-track {
+  background: #ddd;
+}
+.msger-chat::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+}
+.msg {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+.msg:last-of-type {
+  margin: 0;
+}
+.msg-bubble {
+  max-width: 450px;
+  padding: 15px;
+  border-radius: 15px;
+  background: #b2b2b2;
+}
+.msg-img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  background: #ddd;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.msg-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.msg-info-name {
+  margin-right: 10px;
+  font-weight: bold;
+}
+.msg-info-time {
+  font-size: 0.85em;
+}
+
+.left-msg .msg-bubble {
+  border-bottom-left-radius: 0;
   color: #000;
 }
