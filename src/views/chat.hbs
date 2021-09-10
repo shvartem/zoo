@@ -1,49 +1,55 @@
 <script defer src='/js/wsChat.js'></script>
+<script
+  defer
+  src='https://kit.fontawesome.com/8dddf3354c.js'
+  crossorigin='anonymous'
+></script>
 
 <div class='chat-container chat'>
-  <form class='bg-dark form chat__form px-3' name='chatForm'>
-    <div class='mb-3'>
-      <label for='author' class='form-label'>Имя</label>
+
+  <div class='msger-chat'></div>
+
+  <form
+    class='bg-dark form chat__form px-3 d-flex justify-content-between align-items-end py-3'
+    name='chatForm'
+  >
+    <div class='px-3'>
+      <label for='author' class='form-label d-inline-block'>Имя</label>
       <input
         type='text'
         name='author'
-        class='form-control'
+        class='form-control d-inline-block'
         id='author'
         aria-describedby='emailHelp'
         required
       />
     </div>
-    <div class='mb-3'>
-      <label for='text' class='form-label'>Сообщение</label>
-      <input type='text' name='text' class='form-control' id='text' required />
+    <div class='px-3'>
+      <label for='text' class='form-label d-inline-block'>Сообщение</label>
+      <input
+        type='text'
+        name='text'
+        class='form-control d-inline-block'
+        id='text'
+        required
+      />
     </div>
-    <button type='submit' class='btn btn-primary'>Отправить сообщение</button>
+    <button type='submit' class='btn btn-primary'><i
+        class='far fa-paper-plane p-0'
+      ></i></button>
   </form>
-
-  <div class='msger-chat'>
-    <div class='msg left-msg'>
-      <div class='msg-bubble'>
-        <div class='msg-info'>
-          <div class='msg-info-name message__author'>BOT</div>
-          <div class='msg-info-time message__date'>12:45</div>
-        </div>
-
-        <div class='msg-text message__text'>
-          Hi, welcome to SimpleChat! Go ahead and send me a message. 😄
-        </div>
-      </div>
-    </div>
-  </div>
 
 </div>
 
 <template id='message-template'>
-  <div class='message'>
-    <div class='message__header'>
-      <img src='' class='rounded me-2' alt='...' />
-      <strong class='message__author'></strong>
-      <small class='message__date'></small>
+  <div class='msg left-msg'>
+    <div class='msg-bubble'>
+      <div class='msg-info'>
+        <div class='msg-info-name message__author'></div>
+        <div class='msg-info-time message__date'></div>
+      </div>
+
+      <div class='msg-text message__text'></div>
     </div>
-    <div class='message__text'></div>
   </div>
 </template>

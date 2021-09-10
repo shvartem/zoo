@@ -1,9 +1,9 @@
 const ws = new WebSocket('ws://localhost:3000/chat/');
 const { chatForm } = document;
-const messagesContainer = document.querySelector('.chat__messages');
+const messagesContainer = document.querySelector('.msger-chat');
 const messageTemplate = document
   .getElementById('message-template')
-  .content.querySelector('.message');
+  .content.querySelector('.msg');
 
 function dispatchEvent(message) {
   const parsed = JSON.parse(message.data);
@@ -17,7 +17,7 @@ function dispatchEvent(message) {
 
     authorElement.textContent = author;
     textElement.textContent = text;
-    dateElement.textContent = date;
+    dateElement.textContent = date.slice(12);
 
     chatForm.text.value = '';
     messagesContainer.prepend(messageElement);
@@ -25,8 +25,11 @@ function dispatchEvent(message) {
 
   switch (parsed.type) {
     case 'ADDED_MESSAGE':
-      console.log(parsed.payload);
-      createMessage(parsed.payload.author, parsed.payload.text);
+      createMessage(
+        parsed.payload.author,
+        parsed.payload.text,
+        parsed.payload.date,
+      );
       break;
 
     default:
