@@ -27,6 +27,7 @@ module.exports = {
             tableName: 'Admins',
           },
         },
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,

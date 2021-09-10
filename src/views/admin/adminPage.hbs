@@ -74,6 +74,18 @@
         role='tab'
         aria-controls='settings'
         aria-selected='false'
+      >Редактировать staff</button>
+    </li>
+    <li class='nav-item' role='presentation'>
+      <button
+        class='nav-link'
+        id='settings-tab'
+        data-bs-toggle='tab'
+        data-bs-target='#settings'
+        type='button'
+        role='tab'
+        aria-controls='settings'
+        aria-selected='false'
       >Выйти</button>
     </li>
   </ul>
@@ -396,6 +408,20 @@
           <button type='submit' class='btn btn-primary'>Редактировать</button>
         </form>
       </div>
+    </div>
+
+    <div
+      class='tab-pane'
+      id='settings'
+      role='tabpanel'
+      aria-labelledby='settings-tab'
+    >
+    <div class="inner__container">
+      {{#each admins}} 
+      {{>staffCard}}
+      {{/each}}
+    </div>
+
     </div>
 
     <div
