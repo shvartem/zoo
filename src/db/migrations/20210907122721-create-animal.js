@@ -10,23 +10,14 @@ module.exports = {
       name: {
         type: Sequelize.TEXT,
         allowNull: false,
-        validate: {
-          isAlpha: true,
-        },
       },
       description: {
         type: Sequelize.TEXT,
         allowNull: false,
-        validate: {
-          isAlpha: true,
-        },
       },
       image: {
         type: Sequelize.TEXT,
         allowNull: false,
-        validate: {
-          isUrl: true,
-        },
       },
       categoryId: {
         type: Sequelize.INTEGER,

@@ -1,23 +1,19 @@
-const { render } = require('../app');
-
 const router = require('express').Router();
 
-router.get('/', (req, res) => {
-  res.render('index')
-})
+const NewsService = require('../services/news.service');
+const TariffsService = require('../services/tarifs.service');
+const PhotosService = require('../services/photos.service');
 
-router.get('/news', (req, res) => {
-  res.render('news')
-})
-
-router.get('/categories/1', (req, res) => {
-  res.render('category')
-})
-
-
-router.get('/categories/1/animals/1', (req, res) => {
-  res.render('animal')
-})
-
+router.get('/', async (req, res) => {
+  const news = await NewsService.findLastNews();
+  const tariffs = await TariffsService.getAllTarifs();
+  const images = await PhotosService.getAllPhotos();
+  if(req.session?.admin?.name) {
+    const {admin} = req.session
+    res.render('index', { categories: req.categories, news, tariffs, images, admin });
+    return
+  }
+  res.render('index', { categories: req.categories, news, tariffs, images });
+});
 
 module.exports = router;

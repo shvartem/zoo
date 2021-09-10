@@ -1,11 +1,12 @@
+<script defer src="/js/news-page.js"></script>
+
 <div class="news">
   <div class="px-5 inner__container">
     <h2 class="inner__container-title">Новости</h2>
     <div class="news">
-        {{!-- Each card ... --}}
-        {{> newsCard}} 
-        {{> newsCard}}
-        {{> newsCard}}
+        {{#each news}} 
+          {{> newsCard}} 
+        {{/each}}
     </div>
   </div>
 </div>

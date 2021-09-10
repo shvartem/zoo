@@ -1,114 +1,56 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
+<nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
+  <div class='container-fluid'>
+    <a class='navbar-brand' href='/'>
+      <div class='logo'>
+        ZOO
+      </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
-
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">
-    <div class="logo">
-			ZOO
-		</div>
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button
+      class='navbar-toggler'
+      type='button'
+      data-bs-toggle='collapse'
+      data-bs-target='#navbarSupportedContent'
+      aria-controls='navbarSupportedContent'
+      aria-expanded='false'
+      aria-label='Toggle navigation'
+    >
+      <span class='navbar-toggler-icon'></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="dropdown">
-			    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Животные</a>
-		        <ul class="dropdown-menu">
-			        <li><a class="dropdown-item" href=""> Млекопитающие > </a>
-			  	      <ul class="submenu dropdown-menu">
-				          <li><a class="dropdown-item" href="/categories/1">Млекопитающие1</a></li>
-				          <li><a class="dropdown-item" href="#">Млекопитающие2</a></li>
-				          <li><a class="dropdown-item" href="#">Млекопитающие3</a></li>
-				        </ul>
-			        </li>
-			        <li><a class="dropdown-item" href="#"> Птицы > </a>
-			  	      <ul class="submenu dropdown-menu">
-				          <li><a class="dropdown-item" href="#">Птицы1</a></li>
-				          <li><a class="dropdown-item" href="#">Птицы2</a></li>
-				          <li><a class="dropdown-item" href="#">Птицы3</a></li>
-				          <li><a class="dropdown-item" href="#">Птицы4</a></li>
-				        </ul>
-			        </li>
-			        <li><a class="dropdown-item" href="#"> Пресмыкающиеся ></a>
-			  	      <ul class="submenu dropdown-menu">
-				          <li><a class="dropdown-item" href="#">Пресмыкающиеся1</a></li>
-				          <li><a class="dropdown-item" href="#">Пресмыкающиеся2</a></li>
-				          <li><a class="dropdown-item" href="#">Пресмыкающиеся3</a></li>
-				          <li><a class="dropdown-item" href="#">Пресмыкающиеся4</a></li>
-				        </ul>
-			        </li>
-			        <li><a class="dropdown-item" href="#"> Земноводные > </a>
-        	      <ul class="submenu dropdown-menu">
-				          <li><a class="dropdown-item" href="#">Земноводные1</a></li>
-				          <li><a class="dropdown-item" href="#">Земноводные2</a></li>
-				          <li><a class="dropdown-item" href="#">Земноводные3</a></li>
-				          <li><a class="dropdown-item" href="#">Земноводные4</a></li>
-				        </ul>
-              </li>
-			        <li><a class="dropdown-item" href="#"> Рыбы </a></li>
-		        </ul>
+    <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+      <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
+        <li class='dropdown'>
+          <a
+            class='nav-link dropdown-toggle'
+            href='#'
+            data-bs-toggle='dropdown'
+          >Животные</a>
+          <ul class='dropdown-menu'>
+            {{#each categories}}
+              {{> listItem}}
+            {{/each}}
+          </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/#tafiffs">Taрифы</a>
+        <li class='nav-item'>
+          <a
+            class='nav-link active'
+            aria-current='page'
+            href='/#tariffs'
+          >Taрифы</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/#contacts">Контакты</a>
+        <li class='nav-item'>
+          <a class='nav-link' href='/#contacts'>Контакты</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/news">Новости</a>
+        <li class='nav-item'>
+          <a class='nav-link' href='/news'>Новости</a>
         </li>
       </ul>
-      <form class="d-flex">
-        {{!-- <button type="button" class="btn btn-warning">Напишите нам</button> --}}
-        <button class="btn btn-outline-warning" type="submit">Напишите нам</button>
+      {{#if admin}} 
+        <a class='nav-link link-light' href="/admins/{{admin.id}}">{{admin.name}}</a>
+      {{/if}}
+      <form class='d-flex'>
+        <button class='btn btn-outline-warning' type='submit'>Напишите нам</button>
       </form>
     </div>
   </div>
 </nav>
-
-<script type="text/javascript">
-	document.addEventListener("DOMContentLoaded", function(){
-
-		document.querySelectorAll('.dropdown-menu').forEach(function(element){
-			element.addEventListener('click', function (e) {
-			  e.stopPropagation();
-			});
-		})
-		if (window.innerWidth < 992) {
-
-			document.querySelectorAll('.navbar .dropdown').forEach(function(everydropdown){
-				everydropdown.addEventListener('hidden.bs.dropdown', function () {
-					  this.querySelectorAll('.submenu').forEach(function(everysubmenu){
-					  	everysubmenu.style.display = 'none';
-					  });
-				})
-			});
-			
-			document.querySelectorAll('.dropdown-menu a').forEach(function(element){
-				element.addEventListener('click', function (e) {
-		
-				  	let nextEl = this.nextElementSibling;
-				  	if(nextEl && nextEl.classList.contains('submenu')) {	
-				  		// prevent opening link if link needs to open dropdown
-				  		e.preventDefault();
-				  		console.log(nextEl);
-				  		if(nextEl.style.display == 'block'){
-				  			nextEl.style.display = 'none';
-				  		} else {
-				  			nextEl.style.display = 'block';
-				  		}
-
-				  	}
-				});
-			})
-		}
-
-	}); 
-</script>

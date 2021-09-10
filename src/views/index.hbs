@@ -14,14 +14,15 @@
   </div>
 </div>
 
-
 <div class="news">
   <div class="px-5 inner__container">
     <h2 class="inner__container-title">Новости</h2>
         {{!-- Each card ... --}}
-        {{> newsCard}} 
+        {{#each news}}
+          {{> newsCard}} 
+        {{/each}}
         <div class="text-right d-block">
-          <a href="/news">Смотреть все новости зоопарка</a>
+          <a href="/news" class="link-warning">Смотреть все новости зоопарка</a>
         </div>
   </div>
 </div>
@@ -30,25 +31,21 @@
   <div class="inner__container--wide">
     <h2 class="inner__container-title text-center">Наши Животные</h2>
     <div class="galery-wrapper">
-      <div class="one galery_card">{{>galeryCard}}</div>
-      <div class="two galery_card">{{>galeryCard}}</div>
-      <div class="three galery_card galery_card--long">{{>galeryCard}}</div>
-      <div class="four galery_card">{{>galeryCard}}</div>
-      <div class="five galery_card">{{>galeryCard}}</div>
-      <div class="six galery_card">{{>galeryCard}}</div>
-      <div class="seven galery_card">{{>galeryCard}}</div>
+      {{#each images}}
+        {{> galeryCard}}
+      {{/each}}
     </div>
   </div>
 </div>
 
-<div id="tafiffs">
+<div id="tariffs">
   <div class="px-5 inner__container">
     <h2 class="inner__container-title">Taрифы</h2>
     <div class="d-flex flex-wrap">
       {{!-- Each card ... --}}
+      {{#each tariffs}}
       {{> tariffsCard}}
-      {{> tariffsCard}}
-      {{> tariffsCard}}
+      {{/each}}
     </div>
   </div>
 </div>
@@ -58,7 +55,7 @@
     <h2 class="inner__container-title">Контакты</h2>
     <div class="contacts__inner">
       <div class="map">
-        <img src="https://i.imgur.com/PQJhTf7.png" alt="">
+        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A18d6f5366f4bf37ec218ac2183efa18dc9c7f1c38b1812a717e2415456eb5982&amp;source=constructor" width="400" height="400" frameborder="0"></iframe>
       </div>
       <div class="contacts__inner-info">
         <div class="info">
@@ -71,8 +68,3 @@
     </div>
   </div>
 </div>
-
-<div class="footer bg-dark">
-  <a href="">admin</a>
-</div>
-
