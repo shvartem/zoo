@@ -10,6 +10,7 @@ const tariffsService = new TariffsService()
 router.get('/', async (req, res) => {
   const news = await NewsService.findLastNews();
   const tariffs = await tariffsService.getAllTarifs();
+  console.log(tariffs);
   const images = await PhotosService.getAllPhotos();
   const schedule = await SchedulesService.getSchedule();
   if (req.session?.admin?.name) {

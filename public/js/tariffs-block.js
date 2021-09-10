@@ -3,14 +3,12 @@ document.addEventListener('submit', async (e) => {
     e.preventDefault()
     const {action} = e.target
     const formData = new FormData(e.target)
-    console.log(Object.fromEntries(formData));
     const response = await fetch(action, {
     method: 'PUT',
     body: formData
   })
   if(response.ok) {
-    e.target.innerText = 'Готово'
-    window.location.assign('/#tariffs')
+    window.location.reload()
     }
   }
   if(e.target.matches('.deleteTariff')) {
@@ -20,8 +18,7 @@ document.addEventListener('submit', async (e) => {
     method: 'DELETE',
   })
   if(response.ok) {
-    e.target.innerText = 'Готово'
-    window.location.assign('/#tariffs')
+    window.location.reload()
     }
   }
 })
