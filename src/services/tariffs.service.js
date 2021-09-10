@@ -2,16 +2,16 @@
 const db = require('../db/models');
 
 class TariffsService {
-  async findAllTariffs() {
+    async getAllTarifs() {
+    let tariffs;
     try {
-      const tariffs = await db.Tariff.findAll();
-
-      return tariffs;
-    } catch (error) {
-      console.error(error);
-
+      tariffs = await db.Tariff.findAll({attributes: ['id', 'title', 'description','condition', 'price','image'], raw: true})
+    }
+    catch(e) {
+       console.error(error);
       return { message: 'Не удалось найти все тарифы.' };
     }
+    return tariffs
   }
 
   async createNewTariff({ title, description, condition, price, image }) {
@@ -48,29 +48,19 @@ class TariffsService {
     }
   }
 
-  async editTariffById({ id, title, description, condition, price, image }) {
+  async editTariff(tariffData, id) {
+    const {condition, description, title, price, image} = tariffData
+    let tariff
     try {
-      const tariff = await db.Tariff.update(
-        {
-          title,
-          description,
-          condition,
-          price,
-          image,
-        },
-        {
-          where: {
-            id,
-          },
-        },
-      );
-
-      return tariff;
+      if(image) {
+        tariff = await db.Tariff.update({condition, description, title, price, image}, {where: {id}})
+      } 
+        tariff = await db.Tariff.update({condition, description, title, price}, {where: {id}})
     } catch (error) {
       console.error(error);
-
-      return { message: 'Не удалось отредактировать тариф.' };
+      return { message: 'Не удалось обновить тариф' };
     }
+    return tariff
   }
 
   async deleteTariffById(id) {
