@@ -6,9 +6,25 @@
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit sequi natus laboriosam aperiam itaque laborum.
         Veritatis
         vero, autem dolore maiores voluptatem distinctio, neque deserunt</p>
-      <ul>Режим работы
-        <li>Будни</li>
-        <li>Выходные</li>
+      <ul class="intro__schedule schedule">Режим работы
+        <li class="schedule__days">
+          <span class="schedule__day">Будни</span>
+
+          <span class="schedule__day-opening">
+            {{schedule.weekdaysOpening}}
+          </span> - <span class="schedule__day-closing">
+            {{schedule.weekdaysClosing}}
+          </span>
+        </li>
+        <li class="schedule__days">
+          <span class="schedule__day schedule__day_weekend">Выходные</span>
+
+          <span class="schedule__day-opening">
+            {{schedule.weekendOpening}}
+          </span> - <span class="schedule__day-closing">
+            {{schedule.weekendClosing}}
+          </span>
+        </li>
       </ul>
     </div>
   </div>
@@ -59,8 +75,8 @@
       </div>
       <div class="contacts__inner-info">
         <div class="info">
-          <p><a href="">г.Москва, ул.Зоопарковая 5</a></p> 
-          <p><a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
+          <p><a href="https://yandex.ru/maps/213/moscow/?ll=37.578525%2C55.761248&mode=poi&poi%5Bpoint%5D=37.578525%2C55.761248&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D1110600521&z=17.97">г.Москва, ул.Зоопарковая 5</a></p> 
+          <p><a href="tel:+74951234567" target="_blank">+7 (495) 123-45-67</a></p>
           <p><a href="tel:7495123456">12-23-45</a></p>
           <p><a href="mailto:ask@htmlbook.ru">Задавайте вопросы по электронной почте</a></p> 
         </div>
