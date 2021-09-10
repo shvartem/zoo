@@ -40,7 +40,7 @@
                   <label class="form-label">Фото карточки</label>
                   <input id="image" name="image" type="file" class="form-control">
                 </div>
-                <button type="submit" class="btn btn-primary">Подтвердить</button>
+                <button type="submit" class="btn btn-secondary">Подтвердить</button>
                 </form>
               </div>
               <div id="addPhoto" class="d-flex my-3 justify-content-center hidden">
@@ -51,13 +51,13 @@
                     <label class="form-label">Фото карточки</label>
                     <input id="image" required name="image" type="file" class="form-control">
                   </div>
-                  <button type="submit" class="btn btn-primary">Подтвердить</button>
+                  <button type="submit" class="btn btn-secondary">Подтвердить</button>
                 </form>
               </div>
               <div id="deleteAnimal" class="d-flex my-3 justify-content-center hidden">
                 <form name="deleteAnimalForm" action="/categories/{{animal.categoryId}}/animals/{{animal.id}}" class="m-2">
                   <p>Вы уверены что хотите удалить карточку: {{animal.name}}</p>
-                  <button type="submit" class="btn btn-primary">Подтвердить</button>
+                  <button type="submit" class="btn btn-secondary">Подтвердить</button>
                 </form>
               </div>
           {{/if}}

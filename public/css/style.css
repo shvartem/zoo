@@ -307,3 +307,7 @@ ul {
 .hidden {
   display: none !important;
 }
+
+#editTariffModal {
+  color: #000;
+}
