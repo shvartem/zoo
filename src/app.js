@@ -25,6 +25,7 @@ const adminsRouter = require('./routes/admins.router');
 const categoriesRouter = require('./routes/categories.router');
 const tariffsRouter = require('./routes/tariffs.router');
 const newsRouter = require('./routes/news.router');
+const scheduleRouter = require('./routes/schedule.router');
 
 const app = express();
 app.use(session(sessionConfig));
@@ -45,5 +46,6 @@ app.use('/admins', adminsRouter);
 app.use('/categories', categoriesRouter);
 app.use('/tariffs', tariffsRouter);
 app.use('/news', newsRouter);
+app.use('/schedule', scheduleRouter);
 
 module.exports = app;
