@@ -154,10 +154,11 @@ class CategoriesService {
           where: { animalId },
           raw: true,
       });
+      console.log(1, animalPhotos);
     } catch (error) {
       console.error(error);
     }
-    return animalPhotos
+    return animalPhotos || []
   }
 
   async deleteAnimalById(id) {
