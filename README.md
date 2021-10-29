@@ -14,8 +14,9 @@
  <br/>
  <br/>
  
- Backend: WebSockets, Node.js, ExpressJS, Handlebars, Multer, Sequelize ORM
- Database: PostgreSQL
+ - **Frontend:** HTML5, CSS3, Bootstrap
+ - **Backend:** WebSockets, Node.js, ExpressJS, Handlebars, Multer, Sequelize ORM
+ - **Database:** PostgreSQL
 
 ---
 #### Реализован чат для обсуждения онлайн трансляции из вольеров
