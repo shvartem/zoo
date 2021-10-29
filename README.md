@@ -1,5 +1,6 @@
 # Зоопарк
 ### Сайт зоопарка с гелереей животных, администрированием, прямой транслацией из вольеров и чатом
+Ссылка на сайт: тыц[deploy] (Возможно, будет долго открываться, наберитесь терпения)
 ![](/readme-assets/main.gif)
 ![](/readme-assets/animal.gif)
 
@@ -50,3 +51,4 @@
 
 
 [github]: https://github.com/shvartem/zoo
+[deploy]: https://zoo-deploy.herokuapp.com
