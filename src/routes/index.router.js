@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
   const tariffs = await tariffsService.getAllTarifs();
   const images = await PhotosService.getAllPhotos();
   const schedule = await SchedulesService.getSchedule();
-  if (req.session?.admin?.name) {
+    if (req.session?.admin?.name) {
     const { admin } = req.session;
     res.render('index', {
       categories: req.categories,
@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
     });
     return;
   }
-  res.render('index', { categories: req.categories, news, tariffs, images });
+  res.render('index', { categories: req.categories, news, tariffs, images, schedule });
 });
 
 module.exports = router;

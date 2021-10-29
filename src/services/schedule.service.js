@@ -28,7 +28,7 @@ class SchedulesService {
         }
       }
 
-      return schedule;
+      return schedule.dataValues;
     } catch (e) {
       console.error(e);
       return { message: 'Не удалось найти расписание.' };
